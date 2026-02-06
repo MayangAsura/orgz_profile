@@ -114,6 +114,7 @@ export default function Classes() {
 
   })
   const [sort_by, setSortBy] = useState('most-popular')
+  const [subCategory_id, setSubCategory_id] = useState("")
   const [sortOptions, setSortOptions] = useState(
     [
       { name: 'Terpopuler', href: '#', current: true, ordered: 'most-popular'},
@@ -128,14 +129,64 @@ export default function Classes() {
   )
 
   useEffect(() => {
-    if(Object.keys(filters_data).length > 0){
+
+    // if(sort_by){
+    //   sortClasses(sort_by)
+    //   console.log('sort_by', sort_by, classes)
+    // }
+    
+    // console.log(sortOptions)
+
+    if(Object.keys(filters_data).length > 0 || subCategory_id){
       // for()
       // setClasses(classes.filter(i => filters_data.indexOf(i) =))
       // setClasses(availableClass)
+
       console.log(classes)
       console.log('filters_data', filters_data)
-      setClasses(availableClass.filter(item => Object.entries(filters_data).every(([key, values]) => key=='categories'? values.includes(item.type): key=='prices'? values.includes('free')? item.price ==0 : item.price > 0 : item[key] === values)))
-      console.log(classes)
+      
+      const filtered_classes = availableClass.filter(item => Object.entries(filters_data).every(([key, values]) => key=='categories'? values.includes(item.type): key=='prices'? values.includes('free')? item.price ==0 : item.price > 0 : item[key] === values))
+      let sorted_classes = []
+
+      switch (sort_by) {
+      case 'most-popular':
+        sorted_classes = filtered_classes.sort((a, b) => b.views - a.views)
+        // setTimeout(() => {
+        // }, 200);
+        break;
+      case 'best-rating':
+        sorted_classes = filtered_classes.sort((a, b) => b.rating - a.rating)
+        // setTimeout(() => {
+          
+        // }, 200);
+        break;
+      case 'newest':
+        sorted_classes = filtered_classes.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        // setTimeout(() => {
+        // }, 200);
+        break;
+      case 'lowest-price':
+        sorted_classes = filtered_classes.sort((a, b) => a.price - b.price)
+        // setTimeout(() => {
+        // }, 200);
+        break;
+      case 'highest-price':
+        sorted_classes = filtered_classes.sort((a, b) => b.price - a.price)
+        // setTimeout(() => {
+        // }, 200);
+        break;
+    }
+
+    setSortOptions(sortOptions.map(sort => sort.ordered == sort_by? {...sort, current: true} : {...sort, current: false}))
+
+    setClasses(sorted_classes)
+
+    if(subCategory_id){
+      setClasses(sorted_classes.filter(item => item.subcategory_id == subCategory_id))
+    }
+
+      // sortClasses(sort_by)
+      console.log('classes', classes)
   //     setClasses(classes.filter((node) =>
   //   filters_data.length > 0
   //     ? sfilters_data.every((filter_data) =>
@@ -177,14 +228,6 @@ export default function Classes() {
       // setClasses(classes.filter((i, key) => Object.keys(filters).map((j, k) => Object.values(Object.keys(classes))[key] == Object.values(Object.keys(filters))[k] )))z
     }
 
-
-    if(sort_by){
-      sortClasses(sort_by)
-      console.log('sort_by', sort_by, classes)
-    }
-    
-    console.log(sortOptions)
-
     // Apply sorting
   // if (sort_by) {
     
@@ -192,7 +235,7 @@ export default function Classes() {
   
   // setClasses(classes);
     
-  }, [filters_data, sort_by])
+  }, [filters_data, sort_by, subCategory_id])
 
   const handleSort = (arr, field, order) => {
   return arr.sort((a, b) => {
