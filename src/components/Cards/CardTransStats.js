@@ -3,7 +3,7 @@ import React from "react";
 
 import { formatCurrency } from "utils/formatCurrency";
 
-export default function CardStats({
+export default function CardTransStats({
   statSubtitle,
   statTitle,
   statArrow,
@@ -25,7 +25,7 @@ export default function CardStats({
                 {statSubtitle}
               </h5>
               <span className="font-semibold text-xl text-blueGray-700">
-                {statTitle}
+                {`${formatCurrency(statTitle, 'IDR')}`}
               </span>
             </div>
             <div className="relative w-auto pl-4 flex-initial">
@@ -50,7 +50,7 @@ export default function CardStats({
                     : ""
                 }
               ></i>{" "}
-              {/* {statPercent}% */}
+              {statPercent}%
             </span>
             <span className="whitespace-nowrap">{statDescripiron}</span>
           </p>

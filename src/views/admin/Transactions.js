@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import CardTable from "../../components/Cards/CardTable.js";
 import Datatable from "../../components/Tables/Datatables.js"
 import NewDataTable from "../../components/Tables/NewDatatables";
-import { data } from "utils/datas/transactions.js";
+import { data } from "../../utils/datas/transactions.js";
 import { toast } from "react-toastify";
 import supabase from "configs/supabase.js";
 import HeaderTrans from "components/Headers/HeaderTrans.js";
@@ -35,9 +35,9 @@ export default function Transactions() {
         </div> */}
         {/* FROM PRO */}
         <div className="w-full mb-12 px-4">
-          <NewDataTable 
+          <NewDataTable
             data={datas}
-            type='transctions'
+            type='transactions'
             searchBar
             excelExport
             pageSizeControl

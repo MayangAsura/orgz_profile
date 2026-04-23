@@ -11,30 +11,10 @@ import { Id } from "utils/auth/users";
 import { useParams } from "react-router-dom";
 import { StarIcon } from "flowbite-react";
 
+import { formatCurrency } from "utils/formatCurrency";
+
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
-function getDefaultLocale(currencyCode) {
-      const currencyLocaleMap = {
-          USD: 'en-US',
-          IDR: 'id-ID',
-          EUR: 'de-DE',
-          JPY: 'ja-JP',
-          GBP: 'en-GB',
-          CNY: 'zh-CN',
-          AUD: 'en-AU'
-      };
-
-      return currencyLocaleMap[currencyCode] || 'en-US'; // fallback ke en-US
-  }
-
-  function formatCurrency(amount, currencyCode, locale = getDefaultLocale(currencyCode)) {
-      return new Intl.NumberFormat(locale, {
-          style: 'currency',
-          currency: currencyCode,
-          maximumFractionDigits: 2
-      }).format(amount);
-  }
-  
 const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')
 }
@@ -72,7 +52,7 @@ export default function DetailProduct() {
       }else{
         toast('Error when get product detail.')
       }
-      
+
     } catch (error) {
       toast('Error when get product detail.')
     }
@@ -93,7 +73,7 @@ export default function DetailProduct() {
     }else{
       toast('Error get data from server: ' + error)
     }
-    
+
   }
 
   const handleFormInput = async (attr, value) => {
@@ -111,12 +91,12 @@ export default function DetailProduct() {
 
         const { data } = supabase.storage.from('backpage').getPublicUrl(path + file_name)
         console.log(data.publicUrl)
-  
+
         setUsers({...users, [attr]: data})
       }else{
         setUsers({...users, [attr]: value})
       }
-      
+
     }
   }
 
@@ -292,7 +272,7 @@ export default function DetailProduct() {
                         >
                           Harga
                         </label>
-                        
+
                         <span className="text-base text-gray-700"> {`${formatCurrency(product.price, 'IDR')}`} </span>
                       </div>
                     </div>
@@ -300,7 +280,7 @@ export default function DetailProduct() {
                       <div className="relative w-full mb-3">
                         <label
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                          
+
                         >
                           Program
                         </label>
@@ -331,7 +311,7 @@ export default function DetailProduct() {
                         <span className="text-base text-gray-700"> {product.admin_fee} </span>
                       </div>
                     </div> */}
-                    
+
                     {/* <div className="mt-10">
                         {
                             product.orgz_order_details && product.orgz_order_details.length > 0 && (

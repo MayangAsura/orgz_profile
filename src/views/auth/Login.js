@@ -10,7 +10,7 @@ import {login, resetInfo} from '../../redux/authSlice'
 const BASE_URL = process.env.REACT_APP_SERVER_MODE === 'development'? process.env.REACT_APP_LOCAL_URL : process.env.REACT_APP_PROD_URL
 
 export default function Login() {
-  const { userInfo, userEmail, orgzInfo } = useSelector(state => state.authReducer)
+  const { error,userInfo, userEmail, orgzInfo } = useSelector(state => state.authReducer)
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const dispatch = useDispatch()
@@ -21,8 +21,10 @@ export default function Login() {
     if(userEmail){
       navigate('/admin')
     }
+    if(error){console.log('error', error)}
+    if(userInfo){console.log('userInfo', userInfo, userEmail)}
 
-  }, [userInfo, navigate])
+  }, [userInfo, userEmail, error, navigate])
 
   const handleLogin = async () => {
     try {
@@ -37,6 +39,8 @@ export default function Login() {
       //               }
       //             })
       dispatch(login({username, password}))
+
+      console.log('userInfo', userInfo)
     } catch (error) {
         toast("Afwan, ada masalah pada login!")
     }
@@ -78,7 +82,7 @@ export default function Login() {
                   </button>
                 </div>
                 <hr className="mt-6 border-b-1 border-blueGray-300" /> */}
-              </div> 
+              </div>
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 {/* <div className="text-blueGray-400 text-center mb-3 font-bold">
                   <small>Or sign in with credentials</small>

@@ -2,6 +2,8 @@ import Typewrite from "../Texts/TypeWrite";
 import { StarIcon, EyeIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 
+import { formatCurrency } from "utils/formatCurrency";
+
 const availableClass = [
     {title: "Tilawah dan Tadabbur Al Qur'an", slug:'tilawah-dan-tadabbur-al-quran-1256', type: 'Remaja dan Anak-Anak', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
     {title: "Tadrib & Ahkam Tajwid", slug:'tadrib-tadabbur-ahkam-tajwid-1257', type: 'Dewasa', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
@@ -22,30 +24,9 @@ const BlockInTextCard = ({ slug, tag, text, runningText, description, type, crea
   navigate(`/class/${slug}`)
   }
 
-  function getDefaultLocale(currencyCode) {
-      const currencyLocaleMap = {
-          USD: 'en-US',
-          IDR: 'id-ID',
-          EUR: 'de-DE',
-          JPY: 'ja-JP',
-          GBP: 'en-GB',
-          CNY: 'zh-CN',
-          AUD: 'en-AU'
-      };
-
-      return currencyLocaleMap[currencyCode] || 'en-US'; // fallback ke en-US
-  }
-
-  function formatCurrency(amount, currencyCode, locale = getDefaultLocale(currencyCode)) {
-      return new Intl.NumberFormat(locale, {
-          style: 'currency',
-          currency: currencyCode,
-          maximumFractionDigits: 2
-      }).format(amount);
-  }
   return (
     <div className="w-full max-w-xl space-y-6">
-      
+
       <div>
         <p className="mb-1.5 text-sm font-light uppercase">{tag}</p>
         <hr className="border-neutral-700" />
@@ -66,7 +47,7 @@ const BlockInTextCard = ({ slug, tag, text, runningText, description, type, crea
             <p className="text-xs">{rating}/5</p>
             </div>
             <span className="flex type items-center text-center py-1 px-3 ml-1 text-xs border w-[40%] rounded-full bg-green-400 border-gray-600">{type}</span>
-          
+
           </p>
 
         <div className="flex items-center justify-end">
@@ -77,7 +58,7 @@ const BlockInTextCard = ({ slug, tag, text, runningText, description, type, crea
 
         </div>
         {/* <p className="max-w-lg text-xl leading-relaxed">{text}</p> */}
-        
+
         {/* <p className=''></p><p className="type text-xs border w-[40%] rounded-full bg-green-400 border-gray-600">{type}</p> */}
       </div>
       <p className="flex justify-end">

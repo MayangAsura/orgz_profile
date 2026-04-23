@@ -5,6 +5,8 @@ import supabase from "configs/supabase";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
+import { formatCurrency } from "utils/formatCurrency";
+
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
 let datas = []
@@ -12,7 +14,7 @@ let datas = []
 
 const { data: orgz_cash_flows, error } = await supabase
 									.from('orgz_cash_flows')
-									.select('withdraw_number,last_balance,last_withdraw,last_debit, transfer_eviden,is_complete')
+									.select('withdraw_number,last_balance,last_debit,total_debit,request_withdraw,transfer_eviden,is_complete,admin_fee')
 									.eq('orgz_id', ORGZ_ID)
 									.is('deleted_at', null)
 
@@ -22,33 +24,12 @@ if(orgz_cash_flows && orgz_cash_flows.length > 0){
 	datas = orgz_cash_flows
 	// datas = orders.map(order => {return {type: order.type, title: order.title, slug: order.slug, thumbnail: order.thumbnail, price: order.price, views: order.views, rating:order.rating, subcategory_id: order.subcategory_id, subcategory_code: order.orgz_subcategory.code, subcategory_name: order.orgz_subcategory.name}})
 
+	console.log('datas', datas)
 
 }else{
 	// setError(true)
 	// setErrorMessage(error)
 	toast('Error retrive data from server.')
-}
-
-function getDefaultLocale(currencyCode) {
-	const currencyLocaleMap = {
-		USD: 'en-US',
-		IDR: 'id-ID',
-		EUR: 'de-DE',
-		JPY: 'ja-JP',
-		GBP: 'en-GB',
-		CNY: 'zh-CN',
-		AUD: 'en-AU'
-	};
-
-	return currencyLocaleMap[currencyCode] || 'en-US'; // fallback ke en-US
-}
-
-function formatCurrency(amount, currencyCode, locale = getDefaultLocale(currencyCode)) {
-	return new Intl.NumberFormat(locale, {
-		style: 'currency',
-		currency: currencyCode,
-		maximumFractionDigits: 2
-	}).format(amount);
 }
 
 export const data= {
@@ -72,30 +53,50 @@ export const data= {
 			value === "Jane Smith" || value === "Emma Martinez"
 				? "text-green-400 font-medium"
 				: "text-gray-600",
+		renderValue: (value) => {
+			return (
+						`${formatCurrency(value || 0, 'IDR')}`
+			)
+		}
 	},
-	'Debit Terakhir': {
-		values: `${formatCurrency(datas.map(cash_flow => cash_flow.last_debit), 'IDR')}`,
-		classNames: (value) =>
-			value === "Jane Smith" || value === "Emma Martinez"
-				? "text-green-400 font-medium"
-				: "text-gray-600",
-	},
+	// 'Debit Terakhir': {
+	// 	values: `${formatCurrency(datas.map(cash_flow => cash_flow.last_debit), 'IDR')}`,
+	// 	classNames: (value) =>
+	// 		value === "Jane Smith" || value === "Emma Martinez"
+	// 			? "text-green-400 font-medium"
+	// 			: "text-gray-600",
+	// },
 	'Jumlah Penarikan': {
-		values: `${formatCurrency(datas.map(cash_flow => cash_flow.request_withdraw), 'IDR')}`,
+		values: datas.map(cash_flow => cash_flow.request_withdraw),
 		classNames: (value) =>
 			value === "Jane Smith" || value === "Emma Martinez"
 				? "text-green-400 font-medium"
 				: "text-gray-600",
+		renderValue: (value) => {
+			return (
+						`${formatCurrency(value || 0, 'IDR')}`
+			)
+		}
 	},
 	'Biaya Admin': {
-		values: `${formatCurrency(datas.map(cash_flow => cash_flow.admin_fee || '-'), 'IDR')}`,
+		values: datas.map(cash_flow => cash_flow.admin_fee),
+		renderValue: (value) => {
+			return (
+						`${formatCurrency(value || 0, 'IDR')}`
+			)
+		}
 	},
 	'Total Penarikan': {
-		values: `${formatCurrency(datas.map(cash_flow => cash_flow.last_withdraw), 'IDR')}`,
+		values: datas.map(cash_flow => cash_flow.total_debit),
 		classNames: (value) =>
 			value === "Jane Smith" || value === "Emma Martinez"
 				? "text-green-400 font-medium"
 				: "text-gray-600",
+		renderValue: (value) => {
+			return (
+						`${formatCurrency(value || 0, 'IDR')}`
+			)
+		}
 	},
 	Status: {
 		values: datas.map(cash_flow => cash_flow.is_complete),

@@ -11,6 +11,8 @@ import { Id } from "utils/auth/users";
 import { useParams } from "react-router-dom";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
+import { formatCurrency } from "utils/formatCurrency";
+
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
 export default function DetailTransactions() {
@@ -64,7 +66,8 @@ export default function DetailTransactions() {
                                           orgz_users (
                                             full_name,
                                             phone_number,
-                                            domicile,
+                                            orgz_cities (
+                                            name),
                                             job
                                           ),
                                           orgz_order_participants (
@@ -82,15 +85,15 @@ export default function DetailTransactions() {
       }
 
     } catch (error) {
-      
+
     }
   }
 
   const getUsers = async () => {
     const { data, error } = await supabase
                                   .from('orgz_users')
-                                  .select('*, orgz_users ')
-                                  .eq('email', 'admin-rqa@gmail.com')
+                                  .select('*')
+                                  .eq('email', userInfo.email || 'admin-rqa@gmail.com')
                                   .eq('is_active', true)
                                   .is('deleted_at', null)
                                   .single()
@@ -101,7 +104,7 @@ export default function DetailTransactions() {
     }else{
       toast('Error get data from server: ' + error)
     }
-    
+
   }
 
   const handleFormInput = async (attr, value) => {
@@ -119,12 +122,12 @@ export default function DetailTransactions() {
 
         const { data } = supabase.storage.from('backpage').getPublicUrl(path + file_name)
         console.log(data.publicUrl)
-  
+
         setUsers({...users, [attr]: data})
       }else{
         setUsers({...users, [attr]: value})
       }
-      
+
     }
   }
 
@@ -188,7 +191,7 @@ export default function DetailTransactions() {
                     >
                       Total Bayar
                     </label>
-                    <span className="text-base text-gray-700"> {transactions.total_price} </span>
+                    <span className="text-base text-gray-700"> {`${formatCurrency(transactions.total_price, 'IDR')}`} </span>
                     {/* <input
                       type="email"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -230,7 +233,7 @@ export default function DetailTransactions() {
                     >
                       Diskon
                     </label>
-                    <span className="text-base text-gray-700"> {transactions.total_discount} </span>
+                    <span className="text-base text-gray-700"> {transactions.total_discount} %</span>
                   </div>
                 </div>
                 <div className="w-full lg:w-6/12 px-4">
@@ -241,7 +244,7 @@ export default function DetailTransactions() {
                     >
                       Biaya Tambahan (Biaya Admin)
                     </label>
-                    <span className="text-base text-gray-700"> {transactions.admin_fee} </span>
+                    <span className="text-base text-gray-700"> {`${formatCurrency(transactions?.admin_fee, 'IDR')}`} </span>
                   </div>
                 </div>
                 <div className="w-full lg:w-6/12 px-4">
@@ -264,7 +267,7 @@ export default function DetailTransactions() {
           </div>
           <div className="relative flex flex-col  min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
             <div className="flex-auto bg-white px-4 lg:px-10 py-10 pt-0">
-              <h2 className="my-10"> 
+              <h2 className="h2 text-lg font-semibold my-10">
                 Informasi Produk <hr className="mt-6 border-b-1 border-blueGray-300" />
               </h2>
               <div className="mt-10">
@@ -273,33 +276,33 @@ export default function DetailTransactions() {
                         <>
                           {/* <ul className='mb-8'> */}
                               {transactions.orgz_order_details.map ((product, key) => (
-                                  <div key={key+1} className='flex flex-col text-xl mb-2 p-2 '>
+                                  <div key={key+1} className='flex flex-col text-base mb-2 p-2 '>
                                     <p>{key+1}. {product.orgz_products.title}</p>
-                                    <div className="px-3 py-2 m-2">
-                                      <div className='flex justify-between text-center' >
-                                        <span className="text-base text-gray-600"> Harga </span>
+                                    <div className="px-3 py-2 mb-2">
+                                      <div className='flex justify-between max-w-xl text-center' >
+                                        <span className="text-base text-gray-600 bg-blue-300"> Harga </span>
                                         {/* <span className="text-base text-gray-600"> : </span> */}
-                                        <span className="items-end text-base text-gray-500"> {product.price} </span>
+                                        <span className="items-end text-base text-gray-500"> {`${formatCurrency(product.price, 'IDR')}`} </span>
                                       </div>
-                                      <div className='flex justify-between items-center' >
+                                      <div className='flex justify-between max-w-xl items-center' >
                                         <span className="text-base text-gray-600"> Kode Promo </span>
                                         {/* <span className="text-base text-gray-600"> : </span> */}
                                         <span className="items-end text-base text-gray-500"> {product.promo_code} </span>
                                       </div>
-                                      <div className='flex justify-between items-center' >
+                                      <div className='flex justify-between max-w-xl items-center' >
                                         <span className="text-base text-gray-600"> Jumlah</span>
                                         {/* <span className="text-base text-gray-600"> : </span> */}
                                         <span className="items-end text-base text-gray-500"> {product.amount} </span>
                                       </div>
-                                      <div className='flex justify-between items-center' >
+                                      <div className='flex justify-between max-w-xl items-center' >
                                         <span className="text-base text-gray-600"> Diskon</span>
                                         {/* <span className="text-base text-gray-600"> : </span> */}
-                                        <span className="items-end text-base text-gray-500"> {product.discount} </span>
+                                        <span className="items-end text-base text-gray-500"> {product.discount} %</span>
                                       </div>
                                       <div className='flex justify-between items-center' >
                                         <span className="text-base text-gray-600"> Diskon Nominal</span>
                                         {/* <span className="text-base text-gray-600"> : </span> */}
-                                        <span className="items-end text-base text-gray-500"> {product.discount_nominal} </span>
+                                        <span className="items-end text-base text-gray-500"> {`${formatCurrency(product.discount_nominal, 'IDR')}`} </span>
                                       </div>
 
                                     </div>
@@ -315,7 +318,7 @@ export default function DetailTransactions() {
           </div>
           <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
             <div className="flex-auto bg-white px-4 lg:px-10 py-10 pt-0">
-               <h2 className="my-10"> 
+               <h2 className="my-10">
                 Informasi Pendaftar <hr className="mt-6 border-b-1 border-blueGray-300" />
               </h2>
                 <div className="w-full lg:w-6/12 px-4">

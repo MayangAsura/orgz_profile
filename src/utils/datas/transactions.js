@@ -5,6 +5,8 @@ import supabase from "configs/supabase";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
+import { formatCurrency } from "utils/formatCurrency";
+
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
 let datas = []
@@ -27,28 +29,6 @@ if(orders && orders.length > 0){
 	// setError(true)
 	// setErrorMessage(error)
 	toast('Error retrive data from server.')
-}
-
-function getDefaultLocale(currencyCode) {
-	const currencyLocaleMap = {
-		USD: 'en-US',
-		IDR: 'id-ID',
-		EUR: 'de-DE',
-		JPY: 'ja-JP',
-		GBP: 'en-GB',
-		CNY: 'zh-CN',
-		AUD: 'en-AU'
-	};
-
-	return currencyLocaleMap[currencyCode] || 'en-US'; // fallback ke en-US
-}
-
-function formatCurrency(amount, currencyCode, locale = getDefaultLocale(currencyCode)) {
-	return new Intl.NumberFormat(locale, {
-		style: 'currency',
-		currency: currencyCode,
-		maximumFractionDigits: 2
-	}).format(amount);
 }
 
 export const data= {
@@ -74,7 +54,7 @@ export const data= {
 				: "text-gray-600",
 	},
 	'Total Harga': {
-		values: `${formatCurrency(datas.map(order => order.total_price), 'IDR')}`,
+		values: datas.map(order => order.total_price),
 		classNames: (value) =>
 			value === "Jane Smith" || value === "Emma Martinez"
 				? "text-green-400 font-medium"
@@ -88,6 +68,13 @@ export const data= {
 	},
 	'Biaya Admin': {
 		values: datas.map(order => order.admin_fee || '-'),
+		renderValue: (value) => {
+			return (
+					<div className={`font-medium px-3 py-2 m-3 rounded-sm bg-green-500`}>
+						{value}
+					</div>
+				);
+		}
 	},
 	Status: {
 		values: datas.map(order => order.order_status),

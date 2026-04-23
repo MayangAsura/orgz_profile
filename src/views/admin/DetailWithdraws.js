@@ -11,6 +11,8 @@ import { Id } from "utils/auth/users";
 import { useParams } from "react-router-dom";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
+import { formatCurrency } from "utils/formatCurrency";
+
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
 export default function Detailwithdraws() {
@@ -18,7 +20,7 @@ export default function Detailwithdraws() {
   const {userInfo, orgzId} = useSelector(state => state.authReducer)
   const [users, setUsers] = useState({full_name: '', email: '', phone_number: '', job: '', avatar: ''})
   const [withdraws, setwithdraws] = useState({})
-  const { id } = useParams()
+  const { wn } = useParams()
   const username = 'admin-rqa@gmail.com'
 
   useEffect(() => {
@@ -26,58 +28,26 @@ export default function Detailwithdraws() {
       getUsers()
       console.log('users', users)
     }
-    console.log('invoice_number', id)
-    if(id){
-      getDetailwithdraws(id)
+    console.log('withdraw_number', wn)
+    if(wn){
+      getDetailwithdraws(wn)
       console.log('withdraws', withdraws)
     }
-  }, [userInfo, id])
+  }, [userInfo, wn])
 
-  const getDetailwithdraws = async (id) => {
+  const getDetailwithdraws = async (wn) => {
     try {
-      let { data: orgz_orders, error } = await supabase
-                                        .from('orgz_orders')
-                                        .select(`
-                                          orgz_id,
-                                          order_status,
-                                          invoice_number,
-                                          total_price,
-                                          total_amount,
-                                          total_discount,
-                                          promo_code,
-                                          admin_fee,
-                                          orgz_order_details (
-                                            orgz_products (
-                                              id,
-                                              title
-                                            ),
-                                            price,
-                                            promo_code,
-                                            amount,
-                                            seed_amount,
-                                            discount,
-                                            discount_nominal
-                                          ),
-                                          orgz_packets (
-                                            name
-                                          ),
-                                          orgz_users (
-                                            full_name,
-                                            phone_number,
-                                            domicile,
-                                            job
-                                          ),
-                                          orgz_order_participants (
-                                            orgz_user_id,
-                                            full_name
-                                          )
-                                        `)
-                                        .eq('invoice_number', id)
-                                        .single()
+      const { data: orgz_cash_flows, error } = await supabase
+                        .from('orgz_cash_flows')
+                        .select('withdraw_number,last_balance,last_debit,total_debit,request_withdraw,transfer_eviden,is_complete,admin_fee')
+                        .eq('orgz_id', ORGZ_ID)
+                        .eq('withdraw_number', wn)
+                        .is('deleted_at', null)
+                        .single()
                                         // const order = orgz_orders.map(order => ({order_status: order.order_status, total_price: order.total_price, total_amount: order.total_amount, total_discount: order.total_discount, promo_code: order.promo_code, products: order.orgz_order_details, users: order.orgz_users, participants: order.orgz_order_participants, packet_name: order.orgz_packets.name}))
-                                        console.log('order>', orgz_orders)
-      if(orgz_orders){
-        setwithdraws(orgz_orders)
+                                        console.log('order>', orgz_cash_flows)
+      if(orgz_cash_flows){
+        setwithdraws(orgz_cash_flows)
 
       }
 
@@ -152,8 +122,8 @@ export default function Detailwithdraws() {
           <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
           <div className="rounded-t bg-white mb-0 px-6 py-6">
             <div className="text-center flex justify-between">
-              <h6 className="text-blueGray-700 text-xl font-bold">Transaksi #{withdraws.invoice_number} </h6>
-              <span className={`${withdraws.order_status ==='successed'? 'bg-green-400' : withdraws.order_status ==='failed'? 'bg-red-400': 'bg-yellow-400' } px-3 py-2 rounded-md`}>{withdraws.order_status} </span>
+              <h6 className="text-blueGray-700 text-xl font-bold">Penarikan #{withdraws.withdraw_number} </h6>
+              <span className={`font-semibold ${withdraws.is_complete === true? 'bg-green-400' : withdraws.is_complete === false? 'bg-red-400': 'bg-yellow-400' } px-3 py-2 rounded-md`}>{withdraws.is_complete? 'COMPLETE' : 'PENDING'} </span>
               {/* <button
                 className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                 type="button"
@@ -186,9 +156,9 @@ export default function Detailwithdraws() {
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Total Bayar
+                      Jumlah Penarikan
                     </label>
-                    <span className="text-base text-gray-700"> {withdraws.total_price} </span>
+                    <span className="text-base text-gray-700"> {`${formatCurrency(withdraws.request_withdraw, 'IDR')}`} </span>
                     {/* <input
                       type="email"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -204,9 +174,9 @@ export default function Detailwithdraws() {
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Jumlah Produk
+                      Saldo Terakhir
                     </label>
-                    <span className="text-base text-gray-700"> {withdraws.total_amount} </span>
+                    <span className="text-base text-gray-700"> {`${formatCurrency(withdraws.last_balance, 'IDR')}`} </span>
                   </div>
                 </div>
                 <div className="w-full lg:w-6/12 px-4">
@@ -215,11 +185,11 @@ export default function Detailwithdraws() {
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Kode Promo
+                      Biaya Platform
                     </label>
-                    <span className="text-base text-gray-700"> {withdraws.promo_code}
+                    <span className="text-base text-gray-700"> {`${formatCurrency(withdraws.admin_fee, 'IDR')}`}
                     </span>
-                    <span className={`${withdraws.order_status ==='successed'? 'bg-green-400' : withdraws.order_status ==='failed'? 'bg-red-400': 'bg-yellow-400' } ml-2 px-3 py-2 rounded-md`}>{`${withdraws.order_status ==='successed'? <CheckCircleIcon className="w-5 bg-inherit" /> : withdraws.order_status ==='failed'?<CheckCircleIcon className="w-5 bg-inherit" /> : ''}`} </span>
+                    {/* <span className={`${withdraws.order_status ==='successed'? 'bg-green-400' : withdraws.order_status ==='failed'? 'bg-red-400': 'bg-yellow-400' } ml-2 px-3 py-2 rounded-md`}>{`${withdraws.order_status ==='successed'? <CheckCircleIcon className="w-5 bg-inherit" /> : withdraws.order_status ==='failed'?<CheckCircleIcon className="w-5 bg-inherit" /> : ''}`} </span> */}
                   </div>
                 </div>
                 <div className="w-full lg:w-6/12 px-4">
@@ -228,12 +198,12 @@ export default function Detailwithdraws() {
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                      Diskon
+                      Total Penarikan
                     </label>
-                    <span className="text-base text-gray-700"> {withdraws.total_discount} </span>
+                    <span className="text-base text-gray-700"> {`${formatCurrency(withdraws.total_debit, 'IDR')}`} </span>
                   </div>
                 </div>
-                <div className="w-full lg:w-6/12 px-4">
+                {/* <div className="w-full lg:w-6/12 px-4">
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -243,8 +213,8 @@ export default function Detailwithdraws() {
                     </label>
                     <span className="text-base text-gray-700"> {withdraws.admin_fee} </span>
                   </div>
-                </div>
-                <div className="w-full lg:w-6/12 px-4">
+                </div> */}
+                {/* <div className="w-full lg:w-6/12 px-4">
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -254,129 +224,13 @@ export default function Detailwithdraws() {
                     </label>
                     <span className="text-base text-gray-700"> {withdraws.orgz_packets && withdraws.orgz_packets.name} </span>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <hr className="mt-6 border-b-1 border-blueGray-300" />
 
             </form>
           </div>
-          </div>
-          <div className="relative flex flex-col  min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
-            <div className="flex-auto bg-white px-4 lg:px-10 py-10 pt-0">
-              <h2 className="my-10">
-                Informasi Produk <hr className="mt-6 border-b-1 border-blueGray-300" />
-              </h2>
-              <div className="mt-10">
-                  {
-                      withdraws.orgz_order_details && withdraws.orgz_order_details.length > 0 && (
-                        <>
-                          {/* <ul className='mb-8'> */}
-                              {withdraws.orgz_order_details.map ((product, key) => (
-                                  <div key={key+1} className='flex flex-col text-xl mb-2 p-2 '>
-                                    <p>{key+1}. {product.orgz_products.title}</p>
-                                    <div className="px-3 py-2 m-2">
-                                      <div className='flex justify-between text-center' >
-                                        <span className="text-base text-gray-600"> Harga </span>
-                                        {/* <span className="text-base text-gray-600"> : </span> */}
-                                        <span className="items-end text-base text-gray-500"> {product.price} </span>
-                                      </div>
-                                      <div className='flex justify-between items-center' >
-                                        <span className="text-base text-gray-600"> Kode Promo </span>
-                                        {/* <span className="text-base text-gray-600"> : </span> */}
-                                        <span className="items-end text-base text-gray-500"> {product.promo_code} </span>
-                                      </div>
-                                      <div className='flex justify-between items-center' >
-                                        <span className="text-base text-gray-600"> Jumlah</span>
-                                        {/* <span className="text-base text-gray-600"> : </span> */}
-                                        <span className="items-end text-base text-gray-500"> {product.amount} </span>
-                                      </div>
-                                      <div className='flex justify-between items-center' >
-                                        <span className="text-base text-gray-600"> Diskon</span>
-                                        {/* <span className="text-base text-gray-600"> : </span> */}
-                                        <span className="items-end text-base text-gray-500"> {product.discount} </span>
-                                      </div>
-                                      <div className='flex justify-between items-center' >
-                                        <span className="text-base text-gray-600"> Diskon Nominal</span>
-                                        {/* <span className="text-base text-gray-600"> : </span> */}
-                                        <span className="items-end text-base text-gray-500"> {product.discount_nominal} </span>
-                                      </div>
-
-                                    </div>
-                                  </div>
-                              ))}
-                          {/* </ul> */}
-                        </>
-                      )
-                  }
-
-              </div>
-            </div>
-          </div>
-          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
-            <div className="flex-auto bg-white px-4 lg:px-10 py-10 pt-0">
-               <h2 className="my-10">
-                Informasi Pendaftar <hr className="mt-6 border-b-1 border-blueGray-300" />
-              </h2>
-                <div className="w-full lg:w-6/12 px-4">
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                      htmlFor="grid-password"
-                    >
-                      Nomor Telepon
-                    </label>
-                    <span className="text-base text-gray-700"> {withdraws.orgz_users && withdraws.orgz_users.phone_number} </span>
-                  </div>
-                </div>
-                <div className="w-full lg:w-6/12 px-4">
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                      htmlFor="grid-password"
-                    >
-                      Domisili
-                    </label>
-                    <span className="text-base text-gray-700"> {withdraws.orgz_users && withdraws.orgz_users.domicile} </span>
-                  </div>
-                </div>
-                <div className="w-full lg:w-6/12 px-4">
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                      htmlFor="grid-password"
-                    >
-                      Pekerjaan
-                    </label>
-                    <span className="text-base text-gray-700"> {withdraws.orgz_users && withdraws.orgz_users.job || ''} </span>
-                  </div>
-                </div>
-                <div className="w-full lg:w-6/12 px-4">
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                      htmlFor="grid-password"
-                    >
-                      Daftar Peserta
-                    </label>
-                    {
-                        withdraws.orgz_order_participants && withdraws.orgz_order_participants.length > 0 && (
-                          <>
-                            {/* <ul className='mb-8'> */}
-                                {withdraws.orgz_order_participants.map ((user, key) => (
-                                    <div key={key+1} className='flex justify-between items-center text-xl mb-2 p-2 '>
-                                      {key+1}. {user.full_name}
-                                    </div>
-                                ))}
-                            {/* </ul> */}
-                          </>
-                        )
-                    }
-
-                  </div>
-
-                </div>
-            </div>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import Header from 'components/Headers/Header';
 
-const initialState = {
+let initialState = {
     error: false,
     errorMessage: "",
     userInfo: null,
@@ -28,31 +28,30 @@ const LOCAL_URL = process.env.REACT_APP_LOCAL_URL
 export const login = createAsyncThunk(
   '/api/auth/login',
   async (data) => {
-    await axios.post(`${BASE_URL}/api/auth/login`, data, {
-      // withCredentials: true,
-    })
+    await axios.post(`${BASE_URL}/api/auth/login`, data)
           .then(result => {
-            console.log('result', result)
+            console.log('result', result.data.data)
             if(result.status === 200){
-              
-              // Cookies.set('token', result.data.data.token)
-              // state.userInfo = {
+
+              Cookies.set('token', result.data.data.token)
+              // this.iniatialState.userInfo = {
               //   username: result.data.data.username,
               //   full_name: result.data.data.full_name,
               // }
-              // state.orgzInfo = {
-              //   orgz_id: result.data.data.orgz_id,
+              // this.initialState.orgzInfo.orgz_id= result.data.data.orgz_id
+              // this.initialState.orgzInfo.orgz_name= result.data.data.orgz_id
+              //   ,
               //   org_name: result.data.data.orgz_name,
               // }
-              toast('Alhamdulillah, Anda berhasil login.')
+              // toast('Alhamdulillah, Anda berhasil login.')
               return result.data.data
             }
           })
           .catch(error => {
             // console.log(error)
-            toast('Afwan, Error ketika login.')
-            // state.error = true
-            // state.errorMessage = 'Persist login error: ' + error
+            // toast('Afwan, Error ketika login.')
+            // this.state.error = true
+            // this.state.errorMessage = 'Persist login error: ' + error
 
           })
     // const res = await fetch(`${BASE_URL}/api/auth/login`).then(
@@ -85,7 +84,7 @@ export const authSlice = createSlice({
   name: "authInfo",
   initialState,
   reducers: {
-    // login: (state, action) => {
+    // login_: (state, action) => {
     //     axios.post(`${BASE_URL}'/api/auth/login'`, action.payload )
     //       .then(result => {
     //         if(result.status === 200){
@@ -98,12 +97,12 @@ export const authSlice = createSlice({
     //             orgz_id: result.data.data.orgz_id,
     //             org_name: result.data.data.orgz_name,
     //           }
-    //           toast('Alhamdulillah, Anda berhasil login.')
+    //           // toast('Alhamdulillah, Anda berhasil login.')
     //         }
     //       })
     //       .catch(error => {
     //         // console.log(error)
-    //         toast('Afwan, Error ketika login.')
+    //         // toast('Afwan, Error ketika login.')
     //         state.error = true
     //         state.errorMessage = 'Persist login error: ' + error
 
@@ -191,24 +190,25 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(
       login.fulfilled, (state, action) => {
-        console.log(action.payload)
-        Cookies.set('token', action.payload.data.token)
+        console.log('action.payload', action.payload)
+        Cookies.set('token', action.payload.token)
         state.userInfo = {
-          username: action.payload.data.username,
-          full_name: action.payload.data.full_name,
+          username: action.payload.username,
+          full_name: action.payload.full_name,
         }
-        state.userEmail = action.payload.data.username
+        state.userEmail = action.payload.username
         state.orgzInfo = {
-          orgz_id: action.payload.data.orgz_id,
-          org_name: action.payload.data.orgz_name,
+          orgz_id: action.payload.orgz_id,
+          org_name: action.payload.orgz_name,
         }
-        state.orgzId = action.payload.data.orgz_id
+        state.orgzId = action.payload.orgz_id
       }
     )
   }
 });
 
 export const {
+  login_,
   resetInfo
 } = authSlice.actions;
 export default authSlice.reducer;

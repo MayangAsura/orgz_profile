@@ -38,7 +38,7 @@ export default function WithDraws() {
         <div className="w-full mb-12 px-4">
           <NewDataTable
             data={datas}
-            type='transctions'
+            type='withdraws'
             searchBar
             excelExport
             pageSizeControl

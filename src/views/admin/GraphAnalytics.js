@@ -21,7 +21,7 @@ export default function GraphAnalytics() {
 
   useEffect(() => {
     const type = 'classes'
-    getClasses(type)
+    // getClasses(type)
     toast('Hello from dashboard')
   }, []) // Removed product dependency to avoid infinite loop
 

@@ -85,7 +85,7 @@ function App() {
           <Route path="/admin/transactions" element={<Transactions/>} />
           <Route path="/admin/transactions/:id" element={<DetailTransactions/>} />
           <Route path="/admin/balances" element={<WithDraws/>} />
-          <Route path="/admin/balances/:id" element={<DetailWithDraws/>} />
+          <Route path="/admin/balances/:wn" element={<DetailWithDraws/>} />
           <Route path="/admin/account" element={<Profile/>} />
           <Route path="/admin/change-password" element={<ChangePassword/>} />
         </Route>

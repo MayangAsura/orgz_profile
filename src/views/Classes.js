@@ -138,17 +138,17 @@ export default function Classes() {
     //   sortClasses(sort_by)
     //   console.log('sort_by', sort_by, classes)
     // }
-    
+
     // console.log(sortOptions)
 
-    if(Object.keys(filters_data).length > 0 || subCategory_id || category || type){
+    if(Object.keys(filters_data).length > 0 || subCategory_id || category || type || sort_by){
       // for()
       // setClasses(classes.filter(i => filters_data.indexOf(i) =))
       // setClasses(availableClass)
 
       console.log(classes)
       console.log('filters_data', filters_data)
-      
+
       const filtered_classes = availableClass.filter(item => Object.entries(filters_data).every(([key, values]) => key=='categories'? values.includes(item.type): key=='prices'? values.includes('free')? item.price ==0 : item.price > 0 : item[key] === values))
       let sorted_classes = []
 
@@ -161,7 +161,7 @@ export default function Classes() {
       case 'best-rating':
         sorted_classes = filtered_classes.sort((a, b) => b.rating - a.rating)
         // setTimeout(() => {
-          
+
         // }, 200);
         break;
       case 'newest':
@@ -209,11 +209,11 @@ export default function Classes() {
       // When applying new filters
       // setFilteredClasses(prev => {
       //   const sourceArray = prev.length === 0 ? classes : prev;
-        
+
       //   return sourceArray.filter(item => {
       //     return Object.entries(filters_data).every(([key, values]) => {
       //       if (!values || values.length === 0) return true;
-            
+
       //       if (key === 'categories') return values.includes(item.type);
       //       if (key === 'prices') {
       //         const hasFree = values.includes('free');
@@ -223,7 +223,7 @@ export default function Classes() {
       //         if (hasPaid) return item.price > 0;
       //         return true;
       //       }
-            
+
       //       return values.includes(item[key]);
       //     });
       //   });
@@ -233,7 +233,7 @@ export default function Classes() {
       // setClasses(classes.filter(i => {return (!Object.keys(filters_data).includes('price')? Object.keys(i).toLocaleString().toLowerCase().includes(Object.keys(filters_data)): i.price===0?i.price>0:"") }))
       // console.log('classes', classes, classes.filter(i => i.price ===0),classes.filter(([key, value]) => (!Object.keys(filters_data).includes('price')? Object.keys(filters_data).map((fkey) => key == fkey? Object.values(filters_data).includes(value):''):filters_data['price']==='free' && key=='price'?value===0:value>0) ))
       // console.log(classes.filter(item => {Object.entries(filters_data).map(([key, value]) => console.log(key, value)&& key=='category'? item.type == value : item[key] == value).join(' && ')}))
-      
+
       //  i== Object.keys(classes).includes(Object.keys(filters_data))
       // setClasses(classes.filter((i, key) => Object.keys(filters).map((j, k) => Object.values(Object.keys(classes))[key] == Object.values(Object.keys(filters))[k] )))z
     }else{
@@ -242,11 +242,11 @@ export default function Classes() {
 
     // Apply sorting
   // if (sort_by) {
-    
+
   // }
-  
+
   // setClasses(classes);
-    
+
   }, [filters_data, sort_by, subCategory_id, category, type])
 
   const handleSort = (arr, field, order) => {
@@ -275,13 +275,13 @@ const sortDesc = (arr, field) => {
     return (a, b) => {
       if(order=='asc') return a[property] - b[property] == 1
       else return b[property] - a[property] == -1
-      // const comparison = 
+      // const comparison =
       // return order === 'desc' ? -comparison : comparison
     }
   }
 
   const sortClasses = async (sort_by) => {
-    
+
     // if(order === 'most_popular'){
     //   const list_classes = classes.sort(dynamicSort('views', 'desc'))
     //   setClasses(list_classes)
@@ -317,14 +317,14 @@ const sortDesc = (arr, field) => {
       case 'best-rating':
         setTimeout(() => {
           setClasses(classes.sort((a, b) => b.rating - a.rating))
-          
+
         }, 200);
         break;
       case 'newest':
         setTimeout(() => {
-          
+
         }, 200);
-        setClasses(classes.sort((a, b) => 
+        setClasses(classes.sort((a, b) =>
           new Date(b.created_at) - new Date(a.created_at)
         ))
         break;
@@ -349,7 +349,7 @@ const sortDesc = (arr, field) => {
 
     setClasses(availableClass.filter(item => item.subcategory_id == subCategory_id))
     // setTimeout(() => {
-      
+
     // }, 500);
   }
 
@@ -541,7 +541,7 @@ const sortDesc = (arr, field) => {
                       <li key={subCategory.name}>
                         <p onClick={() => handleSubCategory(subCategory.id)} >{subCategory.name}</p>
                         {/* <p onClick={() => {
-  const filtered = classes.filter(classItem => 
+  const filtered = classes.filter(classItem =>
     classItem.subcategory_id === subCategory.id
   );
   setClasses(filtered);
@@ -617,7 +617,7 @@ const sortDesc = (arr, field) => {
                 {/* Product grid */}
                 <div className="lg:col-span-3">{/* Your content */}
                   <div className="flex flex-wrap">
-                      
+
                         {
                           classes.map( (className, index) => (
                             <div key={index} className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
@@ -668,14 +668,14 @@ const sortDesc = (arr, field) => {
                           Chat Admin
                         </button>
                       </div> */}
-                    
-                    
+
+
                   </div>
                 </div>
               </div>
             </section>
           </main>
-          
+
         </div>
       </div>
 

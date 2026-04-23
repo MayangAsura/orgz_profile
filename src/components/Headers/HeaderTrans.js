@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux'
 
 // components
 
-import CardStats from "components/Cards/CardStats.js";
+import CardTransStats from "components/Cards/CardTransStats.js";
 import supabase from "configs/supabase";
 
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
@@ -56,7 +56,7 @@ export default function HeaderTrans() {
                                       .is('deleted_at', null)
                                       .single()
     // , { count: 'exact', head: true }
-    
+
     if(orgz_orders){
       console.log('orgz_orders', orgz_orders)
       setBalance(orgz_orders.sum)
@@ -77,7 +77,7 @@ export default function HeaderTrans() {
                                       .eq('orgz_identities.orgz_id', orgzId??ORGZ_ID)
                                       .is('deleted_at', null)
                                       .single()
-                                      
+
     if(orgz_orders){
       console.log('orgz_orders', orgz_orders)
       setBalance(orgz_orders.sum)
@@ -93,7 +93,7 @@ export default function HeaderTrans() {
             {/* Card stats */}
             <div className="flex flex-wrap">
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
+                <CardTransStats
                   statSubtitle="Saldo"
                   statTitle={balance}
                   statArrow="up"
@@ -105,7 +105,7 @@ export default function HeaderTrans() {
                 />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
+                <CardTransStats
                   statSubtitle="Total Debit"
                   statTitle={total_debit}
                   statArrow="down"
@@ -117,7 +117,7 @@ export default function HeaderTrans() {
                 />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
+                <CardTransStats
                   statSubtitle="Total Kredit"
                   statTitle={total_credit}
                   statArrow="down"

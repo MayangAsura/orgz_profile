@@ -5,7 +5,9 @@ import {useSelector} from 'react-redux'
 
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
-import {MdLockReset, MdOutlineAccountCircle} from 'react-icons/md'
+import {MdLockReset, MdOutlineAccountCircle, MdOutlineAnalytics, MdOutlineAccountBalanceWallet, MdOutlineBrandingWatermark, MdOutlineSpaceDashboard} from 'react-icons/md'
+import {AiFillProduct} from 'react-icons/ai'
+import {GrTransaction} from 'react-icons/gr'
 
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -91,21 +93,22 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   className={
-                    "text-xs uppercase py-3 font-bold block " +
+                    "flex flex-row text-xs uppercase py-3 font-bold " +
                     (window.location.href.indexOf("/admin/dashboard") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
                   to="/admin/dashboard"
                 >
-                  <i
+                  {/* <i
                     className={
                       "fas fa-tv mr-2 text-sm " +
                       (window.location.href.indexOf("/admin/dashboard") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
-                  ></i>{" "}
+                  ></i>{" "} */}
+                  <MdOutlineSpaceDashboard className="mr-2" size="18px" />
                   Dashboard
                 </Link>
               </li>
@@ -113,21 +116,22 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   className={
-                    "text-xs uppercase py-3 font-bold block " +
+                    "flex flex-row text-xs uppercase py-3 font-bold block " +
                     (window.location.href.indexOf("/admin/graph-analytics") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
                   to="/admin/graph-analytics"
                 >
-                  <i
+                  {/* <i
                     className={
-                      "fas fa-tools mr-2 text-sm " +
+                      "fas fa-bar-chart mr-2 text-sm " +
                       (window.location.href.indexOf("/admin/settings") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
-                  ></i>{" "}
+                  ></i>{" "} */}
+                  <MdOutlineAnalytics className="mr-2" size="18px" />
                   Grafik Analisis
                 </Link>
               </li>
@@ -135,21 +139,22 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   className={
-                    "text-xs uppercase py-3 font-bold block " +
+                    "flex flex-row text-xs uppercase py-3 font-bold block " +
                     (window.location.href.indexOf("/admin/classes") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
                   to="/admin/classes"
                 >
-                  <i
+                  {/* <i
                     className={
                       "fas fa-table mr-2 text-sm " +
                       (window.location.href.indexOf("/admin/classes") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
-                  ></i>{" "}
+                  ></i>{" "} */}
+                  <AiFillProduct className="mr-2" size="18px"/>
                   Produk
                 </Link>
               </li>
@@ -157,63 +162,66 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   className={
-                    "text-xs uppercase py-3 font-bold block " +
+                    "flex flex-row text-xs uppercase py-3 font-bold block " +
                     (window.location.href.indexOf("/admin/transactions") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
                   to="/admin/transactions"
                 >
-                  <i
+                  {/* <i
                     className={
                       "fas fa-map-marked mr-2 text-sm " +
                       (window.location.href.indexOf("/admin/transactions") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
-                  ></i>{" "}
+                  ></i>{" "} */}
+                  <GrTransaction className="mr-2" size="18px"/>
                   Transaksi
                 </Link>
               </li>
               <li className="items-center">
                 <Link
                   className={
-                    "text-xs uppercase py-3 font-bold block " +
+                    "flex flex-row text-xs uppercase py-3 font-bold block " +
                     (window.location.href.indexOf("/admin/balances") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
                   to="/admin/balances"
                 >
-                  <i
+                  {/* <i
                     className={
                       "fas fa-map-marked mr-2 text-sm " +
                       (window.location.href.indexOf("/admin/balances") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
-                  ></i>{" "}
+                  ></i>{" "} */}
+                  <MdOutlineAccountBalanceWallet className="mr-2" size="18px"/>
                   Keuangan
                 </Link>
               </li>
               <li className="items-center">
                 <Link
                   className={
-                    "text-xs uppercase py-3 font-bold block " +
+                    "flex flex-row text-xs uppercase py-3 font-bold block " +
                     (window.location.href.indexOf("/admin/transactions") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
                   to="/admin/brandings"
                 >
-                  <i
+                  {/* <i
                     className={
                       "fas fa-map-marked mr-2 text-sm " +
                       (window.location.href.indexOf("/admin/transactions") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
-                  ></i>{" "}
+                  ></i>{" "} */}
+                  <MdOutlineBrandingWatermark className="mr-2" size="18px"/>
                   Branding
                 </Link>
               </li>
@@ -230,21 +238,19 @@ export default function Sidebar() {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <Link
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  className="flex flex-row text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                   to="/admin/account"
                 >
                   {/* <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i> */}
-                  <MdOutlineAccountCircle />
-                  {" "}
+                  <MdOutlineAccountCircle className="mr-2" size="18px" />
                   Akun
                 </Link>
                 <Link
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  className="flex flex-row text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                   to="/admin/change-password"
                 >
                   {/* <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i> */}
-                  <MdLockReset />
-                  {" "}
+                  <MdLockReset className="mr-2" size="18px"/>
                   Reset Password
                 </Link>
                 {/* <Link
