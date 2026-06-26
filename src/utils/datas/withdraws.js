@@ -66,7 +66,7 @@ if(orgz_cash_flows && orgz_cash_flows.length > 0){
 	toast('Error retrive data from server.')
 }
 
-export const data= {
+export const data = {
 	'No. Penarikan': {
 		values: datas.map(cash_flow => cash_flow.withdraw_number),
 		classNames: (value) =>
@@ -178,15 +178,14 @@ export const data= {
     //           </button>
     //       </>,
     //     },
-	},
-	'Aksi': {
-			values: datas.map(cash_flow => cash_flow.id),
+		},
+		'Aksi': {
+			values: datas?.map(cash_flow => cash_flow.id),
 			renderValue: (value) => {
 				return (
 					<>
 							<Link to={`/admin/balances/${value}`} className="rounded-lg bg-[#35a4e5] p-2">
 								<Eye/>
-								{/* Detail */}
 							</Link>
 							{/* <button
 														onClick={addNewItem}
@@ -215,6 +214,6 @@ export const data= {
 				)
                                                                                                                                                                                                                                                                                                       3
 			}
-
 		}
+
 };
