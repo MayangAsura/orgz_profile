@@ -29,6 +29,7 @@ import SquareSlider from "../components/Sliders/SquareSliders";
 import CardTestimonial from "../components/Cards/CardTestimonial";
 import ProductCard from "../components/Cards/ProductCard";
 import OrderHitory from "./customers/OrderHistory";
+import HoverFormalProgramCard from "components/Cards/HoverFormalProgramCard";
 
 const programs = [
   {featured_image: program1, title: "Tashih Tilawah Al Qur'an", description: "Program perbaikan bacaan Al Qur'an khusus Muslimah dan Anak-Anak"},
@@ -63,7 +64,7 @@ export default function Landing() {
       const interval = setInterval(() => {
         handleNextSlide();
       }, 5000); // Change slide every 5 seconds
-      
+
       return () => clearInterval(interval);
     }
   }, [currentSlide, testimonials.length]);
@@ -75,25 +76,25 @@ export default function Landing() {
       classRef.current.focus()
     if(menu === 'testimonial')
       testimonialRef.current.focus()
-  }  
+  }
 
   const handleMoreClasses = () => {
     navigate('/opened-classes')
   }
 
   const handleNextSlide = () => {
-    setCurrentSlide((prev) => 
+    setCurrentSlide((prev) =>
       prev === testimonials.length - 1 ? 0 : prev + 1
     );
   };
 
   const handlePrevSlide = () => {
-    setCurrentSlide((prev) => 
+    setCurrentSlide((prev) =>
       prev === 0 ? testimonials.length - 1 : prev - 1
     );
 };
 
-  
+
   return (
     <>
       <Navbar transparent />
@@ -128,7 +129,7 @@ export default function Landing() {
               </div>
             </div>
           </div>
-          <div
+          {/* <div
             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
             style={{ transform: "translateZ(0)" }}
           >
@@ -146,65 +147,65 @@ export default function Landing() {
                 points="2560 0 2560 100 0 100"
               ></polygon>
             </svg>
-          </div>
+          </div> */}
         </div>
 
-        <section className="p-8 bg-blueGray-100" >
+        {/* <section className="p-8 bg-blueGray-100" >
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap"> */}
               {/* <div className="grid w-full place-content-center bg-gradient-to-br from-indigo-500 to-violet-500 px-4 py-12 text-slate-900">
-              
-              
+
+
               </div> */}
+            {/* </div>
             </div>
-            </div>
-        </section>
+        </section> */}
 
         {/* <h3 className="text-3xl mb-2 font-semibold leading-normal items-center text-center">
-          Keunggulan Kami 
+          Keunggulan Kami
           </h3> */}
         {/* <p className="text-2xl font-semibold mb-6 text-center text-blueGray-800 bg-blueGray-100">Keunggulan Kami</p> */}
 
-        
-        <section className="pb-20 bg-blueGray-200 -mt-24">
+
+        <section className="pb-20 bg-blueGray-200 -mt-24" style={{backgroundImage: `url(/images/AkhwatFillah-program-section-background.png)`, backgroundSize: 'cover', transform: "translateZ(0)"}}>
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 gap-2">
               {/* flex flex-wrap */}
               <HoverDevCard
                         title="Pengajar Kompeten"
                         subtitle="Para pengajar yang kompeten serta memiliki pengalaman mengajar di bidang pengajaran Al-Qur'an."
-                        // tahsin dan tahfidz Al-Qur'an di Rumah Qur’an Al Ayman adalah para pengajar 
+                        // tahsin dan tahfidz Al-Qur'an di Rumah Qur’an Al Ayman adalah para pengajar
                         // subtitle="Para pengajar tahsin dan tahfidz Al-Qur'an yang kompeten serta berpengalaman"
                         href="#"
                         additionalClass="pt-12"
                         Icon={FiUser}
                       />
-                      <HoverDevCard 
-                        title="Sistem Interaktif" 
-                        subtitle="Pembelajaran yang berbasis online dan interaktif langsung antara pengajar dan murid" 
-                        href="#" 
+                      <HoverDevCard
+                        title="Sistem Interaktif"
+                        subtitle="Pembelajaran yang berbasis online dan interaktif langsung antara pengajar dan murid"
+                        href="#"
                         additionalClass=""
-                        Icon={FiMail} 
+                        Icon={FiMail}
                       />
                       <HoverDevCard
-                        title="Pembelajaran Sistematis dan Terstruktur" 
-                        subtitle="Pembelajaran dengan materi dan evaluasi yang telah terjadwal" 
-                        // subtitle="Jadwal belajar yang dapat disesuaikan dengan kesibukan Anda" 
+                        title="Pembelajaran Sistematis dan Terstruktur"
+                        subtitle="Pembelajaran dengan materi dan evaluasi yang telah terjadwal"
+                        // subtitle="Jadwal belajar yang dapat disesuaikan dengan kesibukan Anda"
                         href="#"
-                        additionalClass="" 
-                        Icon={FiCreditCard} 
+                        additionalClass=""
+                        Icon={FiCreditCard}
                       />
-                      <HoverDevCard 
+                      <HoverDevCard
                         title="Fawaid dan Daurah"
-                        subtitle="Menyelenggarakan dauroh/kajian rutin ilmu syar’i dan ilmu yang bermanfaat untuk ummat." 
+                        subtitle="Menyelenggarakan dauroh/kajian rutin ilmu syar’i dan ilmu yang bermanfaat untuk ummat."
                         href="#"
-                      additionalClass="pt-12" 
-                        Icon={FiUsers} 
+                      additionalClass="pt-12"
+                        Icon={FiUsers}
                       />
               {/* <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center"> */}
                 {/* <HoverDevCards/> */}
                 {/* <div className="grid w-full place-content-center bg-gradient-to-br from-indigo-500 to-violet-500 px-4 py-12 text-slate-900">
-                  
+
                 </div> */}
                 {/* <HoverDevCards
                 // title="Pengajar Kompeten"
@@ -212,11 +213,11 @@ export default function Landing() {
                 // href="#"
                 // Icon={FaAward}
               /> */}
-              {/* <HoverDevCards 
-              // title="Interaktif" subtitle="Sistem pembelajaran yang berbasis online dan interaktif langsung antar pengajar dan murid." href="#" 
-              // Icon={FaRetweet} 
+              {/* <HoverDevCards
+              // title="Interaktif" subtitle="Sistem pembelajaran yang berbasis online dan interaktif langsung antar pengajar dan murid." href="#"
+              // Icon={FaRetweet}
               /> */}
-              {/* <HoverDevCards 
+              {/* <HoverDevCards
               // title="Daurah/Kajian" subtitle="Menyelenggarakan dauroh/kajian rutin ilmu syar’i dan ilmu yang bermanfaat untuk ummat." href="#"
               //  Icon={FaHeadset}
                 />         */}
@@ -229,7 +230,7 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">Pengajar Kompeten</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      Para pengajar tahsin dan tahfidz Al-Qur'an serta Rumah Qur’an Al Ayman adalah para pengajar yang kompeten serta memiliki pengalaman mengajar di bidang pengajaran Al-Qur'an. 
+                      Para pengajar tahsin dan tahfidz Al-Qur'an serta Rumah Qur’an Al Ayman adalah para pengajar yang kompeten serta memiliki pengalaman mengajar di bidang pengajaran Al-Qur'an.
                     </p>
                   </div>
                 </div>
@@ -270,18 +271,18 @@ export default function Landing() {
                   <i className="fas fa-user-friends text-xl"></i>
                 </div> */}
                 <h3 className="text-3xl mb-2 font-semibold leading-normal items-center text-center">
-                  Pilihan Program 
+                  Pilihan Program
                 </h3>
               </div>
               <div className="flex flex-wrap items-center justify-center">
                 {/* <div className="lg:pt-12 pt-6 w-full md:w-5/12 px-2 text-center"> */}
                 {
                   programs && programs.map(program => (
-                    <HoverTiltCard featured_image={program.featured_image} title={program.title} description={program.description} />
-                
+                    <HoverFormalProgramCard featured_image={program.featured_image} title={program.title} description={program.description} />
+
                   ))
                 }
-                
+
                   {/* <BlockInTextCard
                     tag="/ Support"
                     text={
@@ -454,7 +455,7 @@ export default function Landing() {
                     Remaja / Dewasa
                   </h4>
                   <div className="flex flex-wrap">
-                      
+
                         {
                           availableClass.map( (className, index) => (
                             <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
@@ -515,14 +516,14 @@ export default function Landing() {
                           Chat Admin
                         </button>
                       </div> */}
-                    
-                    
+
+
                   </div>
                   <div className="flex flex-wrap">
                     <button className="w-full rounded-full border border-neutral-950 py-2 text-sm font-medium transition-colors hover:bg-neutral-950 hover:text-neutral-100"
                       onClick={handleMoreClasses}
                     >
-                      Ke halaman Kelas 
+                      Ke halaman Kelas
                     </button>
 
                   </div>
@@ -598,7 +599,7 @@ export default function Landing() {
               ></polygon>
             </svg>
           </div>
-          
+
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center text-center mb-12">
               <div className="w-full lg:w-6/12 px-4">
@@ -608,28 +609,28 @@ export default function Landing() {
                 </p>
               </div>
             </div>
-            
+
             {/* Testimonial Slider - 3 Cards Per Slide */}
             <div className="relative max-w-6xl mx-auto">
               {/* Slider Container */}
               <div className="overflow-hidden">
-                <div 
+                <div
                   className="flex transition-transform duration-500 ease-in-out"
                   style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                 >
                   {Array(Math.ceil(testimonials.length / 3)).fill().map((_, slideIndex) => (
-                    <div 
+                    <div
                       key={slideIndex}
                       className="w-full flex-shrink-0"
                     >
                       <div className="flex flex-wrap -mx-4">
                         {testimonials.slice(slideIndex * 3, slideIndex * 3 + 3).map((testimonial, cardIndex) => (
-                          <div 
+                          <div
                             key={cardIndex}
                             className="w-full md:w-1/3 px-4 mb-8"
                           >
                             <div className="bg-white p-6 rounded-xl shadow-lg h-full flex flex-col">
-                              
+
                               <div className="mb-6 flex-grow">
                                 <div className="flex items-center mb-4">
                                   <div className="flex space-x-1 text-yellow-400">
@@ -644,11 +645,11 @@ export default function Landing() {
                                   "{testimonial.message}"
                                 </p>
                               </div>
-                              
+
                               <div className="flex items-center justify-end pt-4 border-t border-gray-100">
-                                <img 
-                                  src={testimonial.photo} 
-                                  alt="Testimonial" 
+                                <img
+                                  src={testimonial.photo}
+                                  alt="Testimonial"
                                   className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-indigo-100"
                                 />
                                 <div>
@@ -664,7 +665,7 @@ export default function Landing() {
                   ))}
                 </div>
               </div>
-              
+
               {/* Navigation Buttons */}
               <button
                 onClick={handlePrevSlide}
@@ -673,7 +674,7 @@ export default function Landing() {
               >
                 <ChevronLeftIcon className="w-6 h-6" />
               </button>
-              
+
               <button
                 onClick={handleNextSlide}
                 className="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 md:-mr-8 z-10 w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-300"
@@ -681,7 +682,7 @@ export default function Landing() {
               >
                 <ChevronRightIcon className="w-6 h-6" />
               </button>
-              
+
               {/* Dots Indicator */}
               <div className="flex justify-center mt-8 space-x-3">
                 {Array(Math.ceil(testimonials.length / 3)).fill().map((_, index) => (
@@ -689,8 +690,8 @@ export default function Landing() {
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentSlide === index 
-                        ? 'bg-indigo-600 w-8' 
+                      currentSlide === index
+                        ? 'bg-indigo-600 w-8'
                         : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
@@ -859,7 +860,7 @@ export default function Landing() {
           </div>
         </section> */}
 
-        
+
         {/* <section className="relative block py-24 lg:pt-0 bg-blueGray-800">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">

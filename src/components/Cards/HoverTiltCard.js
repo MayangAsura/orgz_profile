@@ -11,10 +11,10 @@ const HALF_ROTATION_RANGE = 32.5 / 2;
 
 const HoverTilt = ({featured_image, title, description}) => {
     return (
-      
+
           <div className="inset-4 flex-wrap grid gap-6 place-content-center py-2 px-3 text-center">
             {/* md:w-5/12  */}
-                  <div className="relative flex  flex-col min-w-0 break-words pt-0 p-2 bg-white w-full shadow-lg rounded-lg">
+                  <div className="relative flex h-96 flex-col min-w-0 break-words pt-0 p-2 bg-white w-full shadow-lg rounded-lg">
                     <img
                       alt="..."
                       src={featured_image}
@@ -74,7 +74,7 @@ const HoverTiltCard = ({featured_image, title, description}) => {
         transformStyle: "preserve-3d",
         transform,
       }}
-      className=" relative w-full md:w-4/12 flex h-96 w-72 my-2 mx-2 rounded-xl bg-blue-300 indigo-300 "
+      className=" relative w-full md:w-4/12 flex h-96 my-2 mx-2 rounded-xl bg-blue-300 indigo-300 "
     >
       {/* <div
         style={{

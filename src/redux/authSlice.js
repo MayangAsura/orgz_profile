@@ -43,7 +43,7 @@ export const login = createAsyncThunk(
               return result.data.data
             }else{
               console.log('in reject')
-              toast.error('Gagal, Login gagal.')
+              toast.error('Gagal, Email atau password salah')
               return rejectWithValue(result.data.data.error)
             }
             // if(result.status === 200){

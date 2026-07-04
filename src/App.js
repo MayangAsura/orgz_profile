@@ -67,6 +67,8 @@ function App() {
       //   console.log('isAuthenticated-', isAuthenticated)
       if(userEmail && role == 'admin'){
         navigate('/admin')
+      }else if(!userEmail && role != 'admin') {
+        navigate("/")
       }
       // else if(!userEmail){
       //   navigate('/')
