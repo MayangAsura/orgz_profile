@@ -10,8 +10,8 @@ import { FaRegCircleXmark} from 'react-icons/fa6'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-import { formatCurrency } from "utils/formatCurrency";
-import { formatDate } from 'utils/formatIndonesiaDate'
+import { formatCurrency } from "../utils/formatCurrency";
+import { formatDate } from '../utils/formatIndonesiaDate'
 
 const product = {
   name: 'At Tibyan Jilid 1',

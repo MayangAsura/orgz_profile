@@ -2,7 +2,7 @@ import Typewrite from "../Texts/TypeWrite";
 import { StarIcon, EyeIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 
-import { formatCurrency } from "utils/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 const availableClass = [
     {title: "Tilawah dan Tadabbur Al Qur'an", slug:'tilawah-dan-tadabbur-al-quran-1256', type: 'Remaja dan Anak-Anak', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
@@ -21,7 +21,7 @@ const BlockInTextCard = ({ slug, tag, text, runningText, description, type, crea
   const navigate = useNavigate()
 
   const handleDetail = () => {
-  navigate(`/class/${slug}`)
+    navigate(`/class/${slug}`)
   }
 
   return (
@@ -69,10 +69,10 @@ const BlockInTextCard = ({ slug, tag, text, runningText, description, type, crea
         <Typewrite runningText={runningText} />
         <hr className="border-neutral-300" />
       </div>
-      <a type="button" target="_blank" href={`/class/${slug}`} className="w-full rounded-full border border-neutral-950 py-2 text-sm font-medium transition-colors hover:bg-neutral-950 hover:text-neutral-100"
+      <button type="button" onClick={handleDetail} className="w-full rounded-full border border-neutral-950 py-2 text-sm font-medium transition-colors hover:bg-neutral-950 hover:text-neutral-100" rel="noreferrer"
       >
         Daftar Kelas
-      </a>
+      </button>
       {/* onClick={handleDetail} */}
     </div>
   );

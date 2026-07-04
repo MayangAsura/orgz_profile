@@ -3,8 +3,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {useSelector} from 'react-redux'
 
-import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
-import UserDropdown from "components/Dropdowns/UserDropdown.js";
+import NotificationDropdown from "../../components/Dropdowns/NotificationDropdown.js";
+import UserDropdown from "../../components/Dropdowns/UserDropdown.js";
 import {MdLockReset, MdOutlineAccountCircle, MdOutlineAnalytics, MdOutlineAccountBalanceWallet, MdOutlineBrandingWatermark, MdOutlineSpaceDashboard} from 'react-icons/md'
 import {AiFillProduct} from 'react-icons/ai'
 import {GrTransaction} from 'react-icons/gr'

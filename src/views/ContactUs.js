@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { StarIcon } from '@heroicons/react/20/solid'
 import Navbar from '../components/Navbars/AuthNavbar'
 import Modal from '../components/Modals/Modal'
-import Footer from 'components/Footers/Footer'
+import Footer from '../components/Footers/Footer'
 import { FaWhatsappSquare } from 'react-icons/fa'
 
 const product = {
@@ -67,10 +67,10 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 
 const availableClass = [
     {
-        title: "Tilawah dan Tadabbur Al Qur'an", 
-        slug:'tilawah-dan-tadabbur-al-quran-1256', 
-        type: 'Remaja dan Anak-Anak', 
-        description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", 
+        title: "Tilawah dan Tadabbur Al Qur'an",
+        slug:'tilawah-dan-tadabbur-al-quran-1256',
+        type: 'Remaja dan Anak-Anak',
+        description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah",
         price: 'Rp35.000',
         href: '#',
         breadcrumbs: [
@@ -327,7 +327,7 @@ export default function ContactUs() {
     const [modal_open, setModalOpen] = useState(false)
     const [form_order, setFormOrder] = useState({
         names: [],
-        phone_number: '', 
+        phone_number: '',
         packet: class_data.packets[0].code,
         promo_code: '',
         discount: '',
@@ -342,7 +342,7 @@ export default function ContactUs() {
     console.log(id)
     // const names, phone_number, packet, promo_code, discount, totalPrice, class_name
     const navigate = useNavigate()
-    
+
     useEffect(() => {
         if(id){
             const data = availableClass.filter(i =>  i.slug == id)[0]
@@ -363,7 +363,7 @@ export default function ContactUs() {
 
     const checkPromoCode = (code) => {
         // || form_order.category == ''
-        
+
         if(form_order.packet === '' ){
             setIsValidPromoCode(true)
             setCheckPromoMessage('Mohon pilih kategori kelas dan paket terlebih dahulu')
@@ -375,7 +375,7 @@ export default function ContactUs() {
             form_order.discount = promo_codes.find(promo_code => promo_code.code == code).discount_amount
             setCheckPromoMessage(`Kupon valid. Anda mendapat potongan sebesar ${form_order.discount}`)
         }
-        
+
     }
 
     const handleNewNames = (name) => {
@@ -394,7 +394,7 @@ export default function ContactUs() {
                 setFormOrder(form_order => ({...form_order, [name]: value}))
                 // form_order[name] = value
             }
-            
+
         }
         console.log('form_order', form_order)
     }
@@ -619,7 +619,7 @@ export default function ContactUs() {
 
             )}
             {/* {modal_open && ( */}
-            
+
                 {/* // <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" className="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
                 // Toggle modal
                 // </button> */}
@@ -628,7 +628,7 @@ export default function ContactUs() {
             </div>
         </div>
         </div>
-        
+
         </main>
         <Footer />
     </>

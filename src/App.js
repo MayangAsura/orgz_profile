@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {useSelector} from 'react-redux'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Helmet, HelmetProvider } from 'react-helmet';
-// import HelmetPro
 
 // layouts
 
@@ -18,36 +16,36 @@ import Profile from "./views/admin/Profile.js";
 import Index from "./views/Index.js";
 
 import '../src/assets/styles/index.css'
-import ProtectedRoute from 'views/protected/ProtectedRoute.js';
+import ProtectedRoute from './views/protected/ProtectedRoute.js';
 import Classes from './views/Classes.js';
 import DetailClass from './views/DetailClass.js';
 import ContactUs from './views/ContactUs.js';
 import AboutUs from './views/AboutUs.js';
-import Login from 'views/auth/Login.js';
-import Register from 'views/auth/Register.js';
-import Datatable from 'components/Tables/Datatables.js';
+import Login from './views/auth/Login.js';
+import Register from './views/auth/Register.js';
+// import Datatable from 'components/Tables/Datatables.js';
 
 // components
 
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
-import HeaderStats from "components/Headers/HeaderStats.js";
-import Header from "components/Headers/Header.js";
-import FooterAdmin from "components/Footers/FooterAdmin.js";
+// import AdminNavbar from "components/Navbars/AdminNavbar.js";
+// import Sidebar from "components/Sidebar/Sidebar.js";
+// import HeaderStats from "components/Headers/HeaderStats.js";
+// import Header from "components/Headers/Header.js";
+// import FooterAdmin from "components/Footers/FooterAdmin.js";
 
 // views admin
 import Dashboard from './views/admin/Dashboard.js';
-import Products from 'views/admin/Products';
-import ChangePassword from 'views/admin/ChangePassword.js';
-import Transactions from "views/admin/Transactions.js";
+import Products from './views/admin/Products';
+import ChangePassword from './views/admin/ChangePassword.js';
+import Transactions from "./views/admin/Transactions.js";
 import Settings from './views/admin/Settings.js';
 import Maps from './views/admin/Maps.js';
 import Tables from './views/admin/Tables';
-import DetailTransactions from 'views/admin/DetailTransactions.js';
-import DetailProduct from 'views/admin/DetailProduct.js';
-import GraphAnalytics from 'views/admin/GraphAnalytics.js';
-import WithDraws from 'views/admin/WithDraws.js';
-import DetailWithDraws from 'views/admin/DetailWithdraws.js';
+import DetailTransactions from './views/admin/DetailTransactions.js';
+import DetailProduct from './views/admin/DetailProduct.js';
+import GraphAnalytics from './views/admin/GraphAnalytics.js';
+import WithDraws from './views/admin/WithDraws.js';
+import DetailWithDraws from './views/admin/DetailWithdraws.js';
 
 function App() {
 

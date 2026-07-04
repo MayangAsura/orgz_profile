@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Chart from "chart.js";
 
-import supabase from "configs/supabase";
+import supabase from "../../configs/supabase";
 
 export default function CardBarChart({productId}) {
 

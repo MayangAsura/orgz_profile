@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { CheckmarkOutline, CloseOutline, Eye, PencilOutline } from "react-ionicons";
-import supabase from "configs/supabase";
+import supabase from "../../configs/supabase";
 // import { ColumnData } from "../types";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import { formatCurrency } from "utils/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 const BASE_URL = process.env.REACT_APP_SERVER_MODE === 'development'? process.env.REACT_APP_LOCAL_URL : process.env.REACT_APP_PROD_URL
@@ -46,7 +46,7 @@ const deleteWithdraw = async (id) => {
 }
 
 
-const { data: orgz_cash_flows, error } = await supabase
+const { data: orgz_cash_flows, error } = supabase
 									.from('orgz_cash_flows')
 									.select('id, withdraw_number,last_balance,last_debit,total_debit,request_withdraw,transfer_eviden,is_complete,admin_fee')
 									.eq('orgz_id', ORGZ_ID)

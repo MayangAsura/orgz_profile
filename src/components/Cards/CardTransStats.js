@@ -1,7 +1,7 @@
 import React from "react";
 // import PropTypes from "prop-types";
 
-import { formatCurrency } from "utils/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 export default function CardTransStats({
   statSubtitle,

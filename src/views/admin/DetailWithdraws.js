@@ -2,16 +2,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import {useSelector} from 'react-redux'
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
-import supabase from "configs/supabase";
+import Navbar from "../../components/Navbars/AuthNavbar.js";
+import Footer from "../../components/Footers/Footer.js";
+import supabase from "../../configs/supabase";
 import { toast } from "react-toastify";
 
-import { Id } from "utils/auth/users";
+import { Id } from "../../utils/auth/users";
 import { useParams } from "react-router-dom";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
-import { formatCurrency } from "utils/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 

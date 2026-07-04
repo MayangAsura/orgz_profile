@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import {useSelector} from 'react-redux'
 
-import supabase from "configs/supabase.js";
+import supabase from "../../configs/supabase.js";
 
 import { toast } from "react-toastify";
 
@@ -14,9 +14,9 @@ import CardPageVisits from "../../components/Cards/CardPageVisits.js";
 import CardSocialTraffic from "../../components/Cards/CardSocialTraffic.js";
 import LatestTransactions from "../../components/Cards/LatestTransactions.js";
 import DonutChart from "../../components/Charts/DonutChart.js";
-import { Select } from "components/Selects/Select.js";
-import HeaderStats from "components/Headers/HeaderStats.js";
-import Header from "components/Headers/Header.js";
+import { Select } from "../../components/Selects/Select.js";
+import HeaderStats from "../../components/Headers/HeaderStats.js";
+import Header from "../../components/Headers/Header.js";
 
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
@@ -30,20 +30,20 @@ export default function Dashboard() {
     const type = 'classes'
     getClasses(type)
   }, [])
-  
+
   const getClasses = async (type) => {
     const { data: products, error } = await supabase
     .from('orgz_products')
     .select('id,type,title,slug,thumbnail,price,views,rating,subcategory_id,promote_text,description, orgz_subcategory(name, code)')
     .eq('orgz_id', orgzId || ORGZ_ID)
     .eq('type', type)
-    
+
     if(products && products.length > 0){
       console.log('products--', products)
-      
+
       setOptions(products.map(product => ({id: product.id, name: product.title, thumbnail: product.thumbnail})))
       console.log('options from das', options)
-      
+
       console.log('products-', options)
     }else{
       // setError(true)

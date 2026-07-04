@@ -26,7 +26,7 @@ export default function OrderHitory(){
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M1.5 7.75H16.5M11.9213 11.875H11.928M11.9212 14.125H11.9279M9.14676 11.875H9.1535M9.14676 14.125H9.1535M6.37088 11.875H6.37762M6.37088 14.125H6.37762M5.25 4.75V1.75M12.75 4.75V1.75M7.5 18.25H10.5C13.3284 18.25 14.7426 18.25 15.6213 17.3713C16.5 16.4926 16.5 15.0784 16.5 12.25V9.25C16.5 6.42157 16.5 5.00736 15.6213 4.12868C14.7426 3.25 13.3284 3.25 10.5 3.25H7.5C4.67157 3.25 3.25736 3.25 2.37868 4.12868C1.5 5.00736 1.5 6.42157 1.5 9.25V12.25C1.5 15.0784 1.5 16.4926 2.37868 17.3713C3.25736 18.25 4.67157 18.25 7.5 18.25Z"
-                                    stroke="#111827" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                    stroke="#111827" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             <input type="text" name="from-dt" id="from-dt"
                                 className="font-semibold px-2 text-sm text-gray-900 outline-0 appearance-none flex flex-row-reverse cursor-pointer w-28 placeholder-gray-900" placeholder="11-01-2023"/>
@@ -37,7 +37,7 @@ export default function OrderHitory(){
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M1.5 7.75H16.5M11.9213 11.875H11.928M11.9212 14.125H11.9279M9.14676 11.875H9.1535M9.14676 14.125H9.1535M6.37088 11.875H6.37762M6.37088 14.125H6.37762M5.25 4.75V1.75M12.75 4.75V1.75M7.5 18.25H10.5C13.3284 18.25 14.7426 18.25 15.6213 17.3713C16.5 16.4926 16.5 15.0784 16.5 12.25V9.25C16.5 6.42157 16.5 5.00736 15.6213 4.12868C14.7426 3.25 13.3284 3.25 10.5 3.25H7.5C4.67157 3.25 3.25736 3.25 2.37868 4.12868C1.5 5.00736 1.5 6.42157 1.5 9.25V12.25C1.5 15.0784 1.5 16.4926 2.37868 17.3713C3.25736 18.25 4.67157 18.25 7.5 18.25Z"
-                                    stroke="#111827" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                    stroke="#111827" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             <input type="text" name="to-dt" id="to-dt"
                                 className="font-semibold px-2 text-sm text-gray-900 outline-0 appearance-none flex flex-row-reverse cursor-pointer w-28 placeholder-gray-900" placeholder="11-01-2023"/>
@@ -158,7 +158,7 @@ export default function OrderHitory(){
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path className="stroke-gray-600 transition-all duration-500 group-hover:stroke-indigo-600"
                                         d="M14.0261 14.7259L25.5755 26.2753M14.0261 26.2753L25.5755 14.7259" stroke=""
-                                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                        strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                                 cancel order
                             </button>

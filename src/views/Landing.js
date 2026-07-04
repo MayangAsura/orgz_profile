@@ -4,8 +4,8 @@ import { useState, useEffect, useRef } from "react";
 
 // components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
+import Navbar from "../components/Navbars/AuthNavbar.js";
+import Footer from "../components/Footers/Footer.js";
 
 import { FaAward, FaRetweet, FaHeadset } from "react-icons/fa";
 import { FiCreditCard, FiMail, FiUser, FiUsers } from "react-icons/fi";
@@ -29,7 +29,7 @@ import SquareSlider from "../components/Sliders/SquareSliders";
 import CardTestimonial from "../components/Cards/CardTestimonial";
 import ProductCard from "../components/Cards/ProductCard";
 import OrderHitory from "./customers/OrderHistory";
-import HoverFormalProgramCard from "components/Cards/HoverFormalProgramCard";
+import HoverFormalProgramCard from "../components/Cards/HoverFormalProgramCard";
 
 const programs = [
   {featured_image: program1, title: "Tashih Tilawah Al Qur'an", description: "Program perbaikan bacaan Al Qur'an khusus Muslimah dan Anak-Anak"},

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CheckmarkOutline, CloseOutline } from "react-ionicons";
-import supabase from "configs/supabase";
+import supabase from "../../configs/supabase";
 // import { ColumnData } from "../types";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 let datas = []
 
 
-const { data: products, error } = await supabase
+const { data: products, error } = supabase
 									.from('orgz_products')
 									.select('id,type,title,slug,thumbnail,price,views,rating,subcategory_id,promote_text,description, orgz_subcategory(name, code)')
 									.eq('orgz_id', ORGZ_ID)
@@ -18,9 +18,9 @@ const { data: products, error } = await supabase
 
 if(products && products.length > 0){
 	console.log('products--', products)
-	
+
 	datas = products.map(product => {return {id: product.id, type: product.type, title: product.title, slug: product.slug, thumbnail: product.thumbnail, price: product.price, views: product.views, rating:product.rating, subcategory_id: product.subcategory_id, subcategory_code: product.orgz_subcategory.code, subcategory_name: product.orgz_subcategory.name}})
-	
+
 	console.log('products-', datas)
 }else{
 	// setError(true)
@@ -92,14 +92,14 @@ export const data= {
 	Thumbnail: {
 		values: datas.map(product => product.thumbnail || ''),
 		renderValue: (value) =>
-			<img src={value} className='rounded rounded-sm' width='200px' ></img>
+			<img src={value} className='rounded rounded-sm' width='200px' alt=""></img>
 			// value ? (
 			// 	<CheckmarkOutline
 			// 		cssClasses={"!text-green-400"}
 			// 		width={"30px"}
 			// 		height={"30px"}
 			// 	/>
-			// ) 
+			// )
 			// : (
 			// 	<CloseOutline
 			// 		cssClasses={"!text-red-400"}

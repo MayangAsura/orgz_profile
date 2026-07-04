@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import * as XLSX from "xlsx";
-import Modal from "components/Modals/Modal";
+import Modal from "../../components/Modals/Modal";
 // import { ColumnData, sortType } from "../../types";
 import {
 	AddCircle,
@@ -13,8 +13,8 @@ import {
 	TrashOutline,
 } from "react-ionicons";
 
-import { formatCurrency } from "utils/formatCurrency";
-import supabase from "configs/supabase";
+import { formatCurrency } from "../../utils/formatCurrency";
+import supabase from "../../configs/supabase";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useSelector } from "react-redux";

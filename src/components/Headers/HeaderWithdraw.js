@@ -3,8 +3,8 @@ import {useSelector} from 'react-redux'
 
 // components
 
-import CardStats from "components/Cards/CardStats.js";
-import supabase from "configs/supabase";
+import CardStats from "../../components/Cards/CardStats.js";
+import supabase from "../../configs/supabase";
 
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 

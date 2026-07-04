@@ -1,9 +1,9 @@
 import React from 'react'
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/free-mode";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import "swiper/css/free-mode";
 
 import { FreeMode, Pagination } from "swiper/modules";
 
@@ -23,7 +23,7 @@ const SquareSlider = () => {
         </h1>
       </div>
       <div className="w-[70%] md:w-[40%]">
-        <Swiper
+        {/* <Swiper
           breakpoints={{
             340: {
               slidesPerView: 1,
@@ -39,8 +39,8 @@ const SquareSlider = () => {
             clickable: true,
           }}
           modules={[FreeMode, Pagination]}
-        >
-          <SwiperSlide className="mb-14">
+        > */}
+          {/* <SwiperSlide className="mb-14">
             <div className="grid grid-cols-2 gap-4 px-10">
               {TESTIMONI_DATA.map((testimoni) => (
                 <div className="relative group" key={testimoni.testimoni_image_url}>
@@ -75,8 +75,8 @@ const SquareSlider = () => {
                 </div>
               ))}
             </div>
-          </SwiperSlide>
-        </Swiper>
+          </SwiperSlide> */}
+        {/* </Swiper> */}
       </div>
     </div>
   );

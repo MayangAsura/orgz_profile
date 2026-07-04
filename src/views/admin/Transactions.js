@@ -8,8 +8,7 @@ import Datatable from "../../components/Tables/Datatables.js"
 import NewDataTable from "../../components/Tables/NewDatatables";
 import { data } from "../../utils/datas/transactions.js";
 import { toast } from "react-toastify";
-import supabase from "configs/supabase.js";
-import HeaderTrans from "components/Headers/HeaderTrans.js";
+import HeaderTrans from "../../components/Headers/HeaderTrans.js";
 
 export default function Transactions() {
   const [datas, setDatas] = useState([])

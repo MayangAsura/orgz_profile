@@ -2,16 +2,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import {useSelector} from 'react-redux'
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
-import supabase from "configs/supabase";
+import Navbar from "../../components/Navbars/AuthNavbar.js";
+import Footer from "../../components/Footers/Footer.js";
+import supabase from "../../configs/supabase";
 import { toast } from "react-toastify";
 
-import { Id } from "utils/auth/users";
+import { Id } from "../../utils/auth/users";
 import { useParams } from "react-router-dom";
 import { StarIcon } from "flowbite-react";
 
-import { formatCurrency } from "utils/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
@@ -168,7 +168,7 @@ export default function DetailProduct() {
                 >
                   Thumbnail
                 </label>
-                <img className="flex text-base text-gray-700 items-center" width="50%" src={product.thumbnail}/>
+                <img className="flex text-base text-gray-700 items-center" alt="" width="50%" src={product.thumbnail}/>
                 {/* <input
                   type="email"
                   className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"

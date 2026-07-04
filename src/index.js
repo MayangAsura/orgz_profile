@@ -7,11 +7,11 @@ import { persistor, store } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "assets/styles/tailwind.css";
+import "./assets/styles/tailwind.css";
 
 import App from './App'
 import { Helmet } from "react-helmet";
-import Admin from "layouts/Admin";
+import Admin from "./layouts/Admin";
 import { ToastContainer } from "react-toastify";
 
 

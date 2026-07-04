@@ -1,18 +1,16 @@
 import { useState } from "react";
 import { CheckmarkOutline, CloseOutline } from "react-ionicons";
-import supabase from "configs/supabase";
+import supabase from "../../configs/supabase";
 // import { ColumnData } from "../types";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-
-import { formatCurrency } from "utils/formatCurrency";
 
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
 let datas = []
 
 
-const { data: orders, error } = await supabase
+const { data: orders, error } = supabase
 									.from('orgz_orders')
 									.select('invoice_number,total_price,total_amount,promo_code,admin_fee,created_at,order_status,orgz_packets(name, code),orgz_users(full_name)')
 									.eq('orgz_id', ORGZ_ID)

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import supabase from 'configs/supabase.js'
+import supabase from '../../configs/supabase.js'
 
 // components
 
@@ -23,7 +23,7 @@ export default function LatestTransactions() {
                                             phone_number,
                                             avatar
                                           ),
-                                          orgz_order_details (order_id, 
+                                          orgz_order_details (order_id,
                                             orgz_products (
                                               id,
                                               title,
@@ -39,9 +39,9 @@ export default function LatestTransactions() {
       if(orgz_orders){
         console.log('orgz_orders', orgz_orders)
         setLatestTransactions(orgz_orders)
-      }                                   
+      }
     } catch (error) {
-      
+
     }
   }
   return (

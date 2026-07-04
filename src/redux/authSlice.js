@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
-import Header from 'components/Headers/Header';
+// import Header from 'components/Headers/Header';
 
 let initialState = {
     error: false,

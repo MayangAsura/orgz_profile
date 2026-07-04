@@ -3,12 +3,9 @@ import { useState, useEffect } from "react";
 import {useSelector} from 'react-redux'
 
 // components
-
-import CardSettings from "components/Cards/CardSettings.js";
-import CardProfile from "components/Cards/CardProfile.js";
 import { Eye, EyeOff, EyeOutline } from "react-ionicons";
 import md5 from "md5";
-import supabase from "configs/supabase";
+import supabase from "../../configs/supabase";
 import { Bounce, toast, ToastContainer, Zoom } from "react-toastify";
 
 export default function ChangePassword() {

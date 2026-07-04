@@ -7,11 +7,10 @@ import CardTable from "../../components/Cards/CardTable.js";
 import Datatable from "../../components/Tables/Datatables.js"
 import NewDataTable from "../../components/Tables/NewDatatables.js";
 // import { data } from "utils/datas/transactions.js";
-import { data } from "utils/datas/withdraws.js";
+import { data } from "../../utils/datas/withdraws.js";
 import { toast } from "react-toastify";
-import supabase from "configs/supabase.js";
-import HeaderTrans from "components/Headers/HeaderTrans.js";
-import HeaderWithdraw from "components/Headers/HeaderWithdraw.js";
+import HeaderTrans from "../../components/Headers/HeaderTrans.js";
+import HeaderWithdraw from "../../components/Headers/HeaderWithdraw.js";
 
 export default function WithDraws() {
   const [datas, setDatas] = useState([])

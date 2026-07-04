@@ -6,9 +6,8 @@ import { useState, useEffect } from "react";
 import CardTable from "../../components/Cards/CardTable.js";
 import Datatable from "../../components/Tables/Datatables.js"
 import NewDataTable from "../../components/Tables/NewDatatables";
-import { data } from "utils/datas/products.js";
+import { data } from "../../utils/datas/products.js";
 import { toast } from "react-toastify";
-import supabase from "configs/supabase.js";
 
 export default function Products() {
   const [datas, setDatas] = useState([])
@@ -33,7 +32,7 @@ export default function Products() {
         </div> */}
         {/* FROM PRO */}
         <div className="w-full mb-12 px-4">
-          <NewDataTable 
+          <NewDataTable
             data={datas}
             searchBar
             excelExport

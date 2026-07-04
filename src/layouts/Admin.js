@@ -1,25 +1,25 @@
 import React from "react";
-import { Switch, Route, Routes, Navigate, Router, Outlet, NavLink} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 // components
 
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
-import HeaderStats from "components/Headers/HeaderStats.js";
-import Header from "components/Headers/Header.js";
-import FooterAdmin from "components/Footers/FooterAdmin.js";
+import AdminNavbar from "../components/Navbars/AdminNavbar.js";
+import Sidebar from "../components/Sidebar/Sidebar.js";
+// import HeaderStats from "components/Headers/HeaderStats.js";
+// import Header from "components/Headers/Header.js";
+import FooterAdmin from "../components/Footers/FooterAdmin.js";
 
 // views
 
-import Dashboard from "../views/admin/Dashboard.js";
-import Maps from "../views/admin/Maps.js";
-import Settings from "../views/admin/Settings.js";
-import Tables from "../views/admin/Tables";
-import Products from "../views/admin/Products.js";
-import Profile from "../views/Profile.js";
-import Transactions from "views/admin/Transactions.js";
-import ChangePassword from "views/admin/ChangePassword.js";
-import Login from "views/auth/Login.js";
+// import Dashboard from "../views/admin/Dashboard.js";
+// import Maps from "../views/admin/Maps.js";
+// import Settings from "../views/admin/Settings.js";
+// import Tables from "../views/admin/Tables";
+// import Products from "../views/admin/Products.js";
+// import Profile from "../views/Profile.js";
+// import Transactions from "../views/admin/Transactions.js";
+// import ChangePassword from "../views/admin/ChangePassword.js";
+// import Login from "../views/auth/Login.js";
 
 export default function Admin() {
   return (

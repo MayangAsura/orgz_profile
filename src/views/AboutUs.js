@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { StarIcon } from '@heroicons/react/20/solid'
 import Navbar from '../components/Navbars/AuthNavbar'
 import Modal from '../components/Modals/Modal'
-import Footer from 'components/Footers/Footer'
+import Footer from '../components/Footers/Footer'
 
 const product = {
   name: 'At Tibyan Jilid 1',
@@ -66,10 +66,10 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 
 const availableClass = [
     {
-        title: "Tilawah dan Tadabbur Al Qur'an", 
-        slug:'tilawah-dan-tadabbur-al-quran-1256', 
-        type: 'Remaja dan Anak-Anak', 
-        description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", 
+        title: "Tilawah dan Tadabbur Al Qur'an",
+        slug:'tilawah-dan-tadabbur-al-quran-1256',
+        type: 'Remaja dan Anak-Anak',
+        description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah",
         price: 'Rp35.000',
         href: '#',
         breadcrumbs: [
@@ -313,7 +313,7 @@ const abouts = [
 ]
 
 export default function AboutUs() {
-    
+
   return (
     <>
         <Navbar transparent={false} />
@@ -524,7 +524,7 @@ export default function AboutUs() {
                     </form>
                 </div>
             {/* {modal_open && ( */}
-            
+
                 {/* // <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" className="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
                 // Toggle modal
                 // </button> */}
@@ -533,7 +533,7 @@ export default function AboutUs() {
             </div>
         </div>
         </div>
-        
+
         </main>
         <Footer />
     </>

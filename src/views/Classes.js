@@ -17,7 +17,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
 import Navbar from '../components/Navbars/AuthNavbar'
 import BlockInTextCard from '../components/Cards/BlockInTextCard'
-import Footer from 'components/Footers/Footer'
+import Footer from '../components/Footers/Footer'
 
 const sortOptions = [
   { name: 'Terpopuler', href: '#', current: true, ordered: 'most-popular'},

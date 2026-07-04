@@ -2,12 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import {useSelector} from 'react-redux'
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
-import supabase from "configs/supabase";
+import Navbar from "../../components/Navbars/AuthNavbar.js";
+import Footer from "../../components/Footers/Footer.js";
+import supabase from "../../configs/supabase";
 import { toast } from "react-toastify";
 
-import { Id } from "utils/auth/users";
+import { Id } from "../../utils/auth/users";
 
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
@@ -238,9 +238,9 @@ export default function Profile() {
                     >
                       Non Aktifkan Akun?
                     </label>
-                    <label for="toggle-example-checked" className="flex items-center cursor-pointer relative">
-                      <input type="checkbox" id="toggle-example-checked" class="sr-only" checked={users.is_active} />
-                      <div class="toggle-bg bg-gray-200 border-2 border-gray-200 h-6 w-11 rounded-full"></div>
+                    <label htmlFor="toggle-example-checked" className="flex items-center cursor-pointer relative">
+                      <input type="checkbox" id="toggle-example-checked" className="sr-only" checked={users.is_active} />
+                      <div className="toggle-bg bg-gray-200 border-2 border-gray-200 h-6 w-11 rounded-full"></div>
                       {/* <span class="ml-3 text-gray-900 text-sm font-medium"> (checked)</span> */}
                     </label>
                   </div>

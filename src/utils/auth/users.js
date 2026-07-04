@@ -1,4 +1,4 @@
-import supabase from "configs/supabase";
+import supabase from "../../configs/supabase";
 import {useSelector} from 'react-redux'
 
 export const Id = async () => {

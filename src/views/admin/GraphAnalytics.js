@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from 'react-redux'
 
-import supabase from "configs/supabase.js";
+import supabase from "../../configs/supabase.js";
 
 import { toast } from "react-toastify";
 
