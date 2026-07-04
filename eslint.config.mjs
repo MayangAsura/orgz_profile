@@ -54,8 +54,9 @@ export default defineConfig([{
     },
 
     rules: {
-        "no-unused-vars": "warn",
+        "no-unused-vars": "off",
         "react/jsx-uses-react": "off",
+        "react/jsx-uses-vars": "off",
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
         "no-unreachable": "off",
@@ -68,7 +69,7 @@ export default defineConfig([{
         "jsx-a11y/label-has-for": "warn",
         "jsx-a11y/no-noninteractive-element-interactions": "warn",
         "jsx-a11y/click-events-have-key-events": "warn",
-        "jsx-a11y/anchor-is-valid": "warn"
+        "jsx-a11y/anchor-is-valid": "warn",
         // "jsx-a11y/label-has-for": ["error", {
         //     "required": {
         //     "some": ["nesting", "id"]
