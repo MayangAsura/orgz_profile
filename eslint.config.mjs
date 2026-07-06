@@ -54,7 +54,7 @@ export default defineConfig([{
     },
 
     rules: {
-        "no-unused-vars": "off",
+        "no-unused-vars": "warn",
         "react/jsx-uses-react": "off",
         "react/jsx-uses-vars": "off",
         "react/react-in-jsx-scope": "off",
@@ -63,7 +63,7 @@ export default defineConfig([{
         "no-empty": [2, {"allowEmptyCatch": true}],
         // "no-empty": [2, {"exceptions": "catch"}],
         "react/jsx-key": [1, { checkFragmentShorthand: true }],
-        "react/no-unescaped-entities": "off",
+        "react/no-unescaped-entities": "warn",
         "jsx-a11y/no-redundant-roles": "warn",
         "jsx-a11y/label-has-associated-control": "warn",
         "jsx-a11y/label-has-for": "warn",

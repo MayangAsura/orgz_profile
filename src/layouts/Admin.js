@@ -1,5 +1,6 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // components
 
@@ -8,6 +9,7 @@ import Sidebar from "../components/Sidebar/Sidebar.js";
 // import HeaderStats from "components/Headers/HeaderStats.js";
 // import Header from "components/Headers/Header.js";
 import FooterAdmin from "../components/Footers/FooterAdmin.js";
+import { userEmail } from "../redux/authSlice.js";
 
 // views
 
@@ -22,6 +24,17 @@ import FooterAdmin from "../components/Footers/FooterAdmin.js";
 // import Login from "../views/auth/Login.js";
 
 export default function Admin() {
+
+  const {userInfo, orgzInfo, userEmail, role} = useSelector(state => state.authReducer)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+      if(userEmail && role == 'admin'){
+        navigate('/admin')
+      }else if(!userEmail && role != 'admin') {
+        navigate("/admin/login")
+      }
+  }, [userEmail, role])
   return (
     <>
       {/* <nav>

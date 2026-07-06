@@ -35,6 +35,7 @@ import Register from './views/auth/Register.js';
 
 // views admin
 import Dashboard from './views/admin/Dashboard.js';
+import FormalProducts from 'views/admin/FormalProduct.js';
 import Products from './views/admin/Products';
 import ChangePassword from './views/admin/ChangePassword.js';
 import Transactions from "./views/admin/Transactions.js";
@@ -43,6 +44,7 @@ import Maps from './views/admin/Maps.js';
 import Tables from './views/admin/Tables';
 import DetailTransactions from './views/admin/DetailTransactions.js';
 import DetailProduct from './views/admin/DetailProduct.js';
+import DetailFormalProduct from 'views/admin/DetailFormalProduct.js';
 import GraphAnalytics from './views/admin/GraphAnalytics.js';
 import WithDraws from './views/admin/WithDraws.js';
 import DetailWithDraws from './views/admin/DetailWithdraws.js';
@@ -63,11 +65,6 @@ function App() {
       //   setIsAuthenticated(true)
       //   console.log('userInfo-', userInfo)
       //   console.log('isAuthenticated-', isAuthenticated)
-      if(userEmail && role == 'admin'){
-        navigate('/admin')
-      }else if(!userEmail && role != 'admin') {
-        navigate("/")
-      }
       // else if(!userEmail){
       //   navigate('/')
       // }
@@ -90,6 +87,8 @@ function App() {
           <Route path="/admin/tables" element={<Tables/>} /> */}
           <Route path="/admin/classes" element={<Products/>} />
           <Route path="/admin/classes/:id" element={<DetailProduct/>} />
+          <Route path="/admin/formal-programs" element={<FormalProducts/>} />
+          <Route path="/admin/formal-programs/:id" element={<DetailFormalProduct/>} />
           <Route path="/admin/transactions" element={<Transactions/>} />
           <Route path="/admin/transactions/:id" element={<DetailTransactions/>} />
           <Route path="/admin/balances" element={<WithDraws/>} />

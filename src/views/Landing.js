@@ -278,7 +278,7 @@ export default function Landing() {
                 {/* <div className="lg:pt-12 pt-6 w-full md:w-5/12 px-2 text-center"> */}
                 {
                   programs && programs.map(program => (
-                    <HoverFormalProgramCard featured_image={program.featured_image} title={program.title} description={program.description} />
+                    <HoverFormalProgramCard key={program.featured_image} featured_image={program.featured_image} title={program.title} description={program.description} />
 
                   ))
                 }
