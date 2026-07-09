@@ -46,7 +46,7 @@ const BlockInTextCard = ({ slug, tag, text, runningText, description, type, crea
             ))}
             <p className="text-xs">{rating}/5</p>
             </div>
-            <span className="flex type items-center text-center py-1 px-3 ml-1 text-xs border w-[40%] rounded-full bg-green-400 border-gray-600">{type}</span>
+            <span className="flex items-center text-center p-1 px-3 ml-1 text-xs border rounded-full bg-green-400 border-gray-600">{type?.toUpperCase()}</span>
 
           </p>
 

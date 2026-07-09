@@ -641,16 +641,15 @@ export default function DetailClass() {
                             className="flex rounded-full outline outline-1 -outline-offset-1 outline-black/10"
                         >
                             <input
-                            defaultValue={color.id}
-                            defaultChecked={color === class_data?.colors[0]}
-                            name="color"
-                            type="radio"
-                            aria-label={color.name}
-                            onChange={(e) => handleFormData('category', e.target.value)}
-                            className={classNames(
-                                color.classes,
-                                'size-8 appearance-none rounded-full forced-color-adjust-none checked:outline checked:outline-2 checked:outline-offset-2 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px]',
-                            )}
+                                defaultValue={color.id}
+                                defaultChecked={color === class_data?.colors[0]}
+                                name="color"
+                                aria-label={color.name}
+                                onChange={(e) => handleFormData('category', e.target.value)}
+                                className={classNames(
+                                    color.classes,
+                                    'size-8 appearance-none rounded-full forced-color-adjust-none checked:outline checked:outline-2 checked:outline-offset-2 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px]',
+                                )}
                             />
                         </div>
                         ))}
@@ -668,28 +667,29 @@ export default function DetailClass() {
                     </div>
 
                     <fieldset aria-label="Choose a size" className="mt-4">
-                    <div className="grid grid-cols-4 gap-3">
-                        {class_data?.packets.map((packet) => (
-                        <label
-                            key={packet.code}
-                            aria-label={packet.name}
-                            className="group relative flex items-center justify-center rounded-md border border-gray-300 bg-white p-3 has-[:checked]:border-indigo-600 has-[:disabled]:border-gray-400 has-[:checked]:bg-indigo-600 has-[:disabled]:bg-gray-200 has-[:disabled]:opacity-25 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600"
-                        >
-                            <input
-                            defaultValue={packet.code}
-                            defaultChecked={packet === class_data?.packets[0]}
-                            name="packet"
-                            type="radio"
-                            disabled={!packet.is_stock}
-                            onClick={() => handleFormData('packet', packet.code)}
-                            className="absolute inset-0 appearance-none focus:outline focus:outline-0 disabled:cursor-not-allowed"
-                            />
-                            <span className="text-sm font-medium uppercase text-gray-900 group-has-[:checked]:text-white">
-                            {packet.name}
-                            </span>
-                        </label>
-                        ))}
-                    </div>
+                        <div className="grid grid-cols-4 gap-3">
+                            {class_data?.packets.map((packet) => (
+                            <label
+                                key={packet.code}
+                                aria-label={packet.name}
+                                className="group relative flex items-center justify-center rounded-md border border-gray-300 bg-white p-3 has-[:checked]:border-indigo-600 has-[:disabled]:border-gray-400 has-[:checked]:bg-indigo-600 has-[:disabled]:bg-gray-200 has-[:disabled]:opacity-25 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600"
+                            >
+                                <input
+                                    defaultValue={packet.code}
+                                    defaultChecked={packet === class_data?.packets[0]}
+                                    name="packet"
+                                    type="radio"
+                                    disabled={!packet.is_stock}
+                                    onClick={() => handleFormData('packet', packet.code)}
+                                    className="absolute appearance-none disabled:cursor-not-allowed"
+                                    // inset-0
+                                />
+                                <span className="text-sm font-medium uppercase text-gray-900 group-has-[:checked]:text-white">
+                                {packet.name}
+                                </span>
+                            </label>
+                            ))}
+                        </div>
                     </fieldset>
                 </div>
 
