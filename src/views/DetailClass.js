@@ -582,11 +582,11 @@ export default function DetailClass() {
                 className="w-full size-full rounded-lg object-cover max-lg:hidden"
                 // col-start-2 aspect-[3/2]
             /> */}
-            {/* <img
+            <img
                 alt={product.images[2].alt}
                 src={product.images[2].src}
-                className="col-start-2 row-start-2 aspect-[3/2] size-full rounded-lg object-cover max-lg:hidden"
-            /> */}
+                className="col-start-2 row-start-2 size-full rounded-lg object-cover max-lg:hidden"
+            />
             {/* <img
                 alt={product.images[3].alt}
                 src={product.images[3].src}
@@ -597,7 +597,7 @@ export default function DetailClass() {
             {/* Product info */}
             <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
             <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{class_data.name}</h1>
+                <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{class_data.title}</h1>
             </div>
 
             {/* Options */}
