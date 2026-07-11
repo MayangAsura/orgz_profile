@@ -54,9 +54,9 @@ export default defineConfig([{
     },
 
     rules: {
-        "no-unused-vars": "off",
-        "react/jsx-uses-react": "off",
-        "react/jsx-uses-vars": "off",
+        "no-unused-vars": "warn",
+        "react/jsx-uses-react": "warn",
+        "react/jsx-uses-vars": "warn",
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
         "no-unreachable": "off",
