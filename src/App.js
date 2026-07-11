@@ -35,7 +35,7 @@ import Register from './views/auth/Register.js';
 
 // views admin
 import Dashboard from './views/admin/Dashboard.js';
-import FormalProducts from 'views/admin/FormalProduct.js';
+import FormalProducts from './views/admin/FormalProduct.js';
 import Products from './views/admin/Products';
 import ChangePassword from './views/admin/ChangePassword.js';
 import Transactions from "./views/admin/Transactions.js";
@@ -44,7 +44,7 @@ import Maps from './views/admin/Maps.js';
 import Tables from './views/admin/Tables';
 import DetailTransactions from './views/admin/DetailTransactions.js';
 import DetailProduct from './views/admin/DetailProduct.js';
-import DetailFormalProduct from 'views/admin/DetailFormalProduct.js';
+import DetailFormalProduct from './views/admin/DetailFormalProduct.js';
 import GraphAnalytics from './views/admin/GraphAnalytics.js';
 import WithDraws from './views/admin/WithDraws.js';
 import DetailWithDraws from './views/admin/DetailWithdraws.js';
