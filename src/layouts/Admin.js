@@ -29,9 +29,10 @@ export default function Admin() {
   const navigate = useNavigate()
 
   useEffect(() => {
-      if(userEmail && role == 'admin'){
-        navigate('/admin')
-      }else if(!userEmail && role != 'admin') {
+      // if(userEmail && role == 'admin'){
+      //   navigate('/admin')
+      // }
+      if(!userEmail && role != 'admin') {
         navigate("/admin/login")
       }
   }, [userEmail, role])

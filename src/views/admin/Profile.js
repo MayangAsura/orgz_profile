@@ -72,6 +72,7 @@ export default function Profile() {
         console.log(data.publicUrl)
 
         setUsers({...users, [attr]: data.publicUrl})
+        
       }else{
         setUsers({...users, [attr]: value})
       }

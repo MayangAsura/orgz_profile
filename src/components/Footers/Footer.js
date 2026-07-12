@@ -29,7 +29,7 @@ export default function Footer({programRef, classRef, testimonialRef, handleNavi
             <div className="w-full lg:w-6/12 px-4">
               <h4 className="text-3xl font-semibold">Rumah Qur’an Al Ayman</h4>
               <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
-                Belajar Al Qur'an dan Tahsin Online 
+                Belajar Al Qur'an dan Tahsin Online
               </h5>
               <div className="mt-6 lg:mb-0 mb-6">
                 <button
@@ -186,12 +186,13 @@ export default function Footer({programRef, classRef, testimonialRef, handleNavi
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-4/12 px-4 mx-auto text-center">
               <div className="text-sm text-blueGray-500 font-semibold py-1">
-                Copyright © {new Date().getFullYear()} Created with enjoy by Maryam Al Auza'iy. {" "}
+                Copyright © {new Date().getFullYear()} Created with enjoy by {" "}
                 <a
-                  href="https://www.creative-tim.com?ref=nr-footer"
+                  href="#"
                   className="text-blueGray-500 hover:text-blueGray-800"
                 >
-                  Creative Tim
+                  Maryam Al Auza
+                  {/* Creative Tim */}
                 </a>
                 .
               </div>

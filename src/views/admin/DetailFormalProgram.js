@@ -19,7 +19,7 @@ const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function DetailFormalProduct() {
+export default function DetailFormalProgram() {
 
   const {userInfo, orgzId} = useSelector(state => state.authReducer)
   const [users, setUsers] = useState({full_name: '', email: '', phone_number: '', job: '', avatar: ''})

@@ -44,7 +44,11 @@ import Maps from './views/admin/Maps.js';
 import Tables from './views/admin/Tables';
 import DetailTransactions from './views/admin/DetailTransactions.js';
 import DetailProduct from './views/admin/DetailProduct.js';
-import DetailFormalProduct from './views/admin/DetailFormalProduct.js';
+import ProductCreate from './views/admin/ProductCreate.js';
+import ProductEdit from './views/admin/ProductEdit.js';
+import DetailFormalProgram from './views/admin/DetailFormalProgram.js';
+import FormalProgramCreate from './views/admin/FormalProgramCreate.js';
+import FormalProgramEdit from './views/admin/FormalProgramEdit.js';
 import GraphAnalytics from './views/admin/GraphAnalytics.js';
 import WithDraws from './views/admin/WithDraws.js';
 import DetailWithDraws from './views/admin/DetailWithdraws.js';
@@ -86,9 +90,13 @@ function App() {
           <Route path="/admin/settings" element={<Settings/>} />
           <Route path="/admin/tables" element={<Tables/>} /> */}
           <Route path="/admin/classes" element={<Products/>} />
+          <Route path="/admin/classes/add" element={<ProductCreate/>} />
           <Route path="/admin/classes/:id" element={<DetailProduct/>} />
+          <Route path="/admin/classes/:id/edit" element={<ProductEdit/>} />                                                                                    
           <Route path="/admin/formal-programs" element={<FormalProducts/>} />
-          <Route path="/admin/formal-programs/:id" element={<DetailFormalProduct/>} />
+          <Route path="/admin/formal-programs/add" element={<FormalProgramCreate/>} />
+          <Route path="/admin/formal-programs/:id" element={<DetailFormalProgram/>} />
+          <Route path="/admin/formal-programs/:id/edit" element={<FormalProgramEdit/>} />
           <Route path="/admin/transactions" element={<Transactions/>} />
           <Route path="/admin/transactions/:id" element={<DetailTransactions/>} />
           <Route path="/admin/balances" element={<WithDraws/>} />

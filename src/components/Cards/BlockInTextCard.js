@@ -61,10 +61,10 @@ const BlockInTextCard = ({ slug, tag, text, runningText, description, type, crea
 
         {/* <p className=''></p><p className="type text-xs border w-[40%] rounded-full bg-green-400 border-gray-600">{type}</p> */}
       </div>
-      <p className="flex justify-end">
-            <EyeIcon className="text-center size-5 mr-1"/>
-            {views}
-          </p>
+      {/* <p className="flex justify-end">
+        <EyeIcon className="text-center size-5 mr-1"/>
+        {views}
+      </p> */}
       <div>
         <Typewrite runningText={runningText} />
         <hr className="border-neutral-300" />

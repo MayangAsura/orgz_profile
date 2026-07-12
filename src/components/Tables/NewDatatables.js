@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import * as XLSX from "xlsx";
 import Modal from "../../components/Modals/Modal";
 // import { ColumnData, sortType } from "../../types";
@@ -45,6 +46,7 @@ const NewDataTable = ({
 }) => {
 	const columns = Object.keys(data);
 	const rowCount = Math.max(...columns.map((column) => data[column].values.length));
+	const navigate = useNavigate()
 
 	const {orgzId} = useSelector(state => state.authReducer)
 
@@ -159,8 +161,20 @@ const NewDataTable = ({
 
 	const addNewItem = () => {
 		try {
-
-			setModalOpen(true)
+			switch (type){
+				case 'product':
+					navigate('/products/add')
+					break;
+				case 'formal-products':
+					navigate('/formal-products/add')
+					break;
+				case 'transactions':
+					// navigate('/transactions/add')
+					break;
+				case 'withdraws':
+					setModalOpen(true)
+					break;
+			}
 		} catch (error) {
 
 		}

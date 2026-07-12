@@ -34,8 +34,10 @@ export default function Products() {
         <div className="w-full mb-12 px-4">
           <NewDataTable
             data={datas}
+            type='products'
             searchBar
             excelExport
+            addNew
             pageSizeControl
             pagination
             removableRows
