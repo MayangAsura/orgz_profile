@@ -582,11 +582,11 @@ export default function DetailClass() {
                 className="w-full size-full rounded-lg object-cover max-lg:hidden"
                 // col-start-2 aspect-[3/2]
             /> */}
-            <img
+            {/* <img
                 alt={product.images[2].alt}
                 src={product.images[2].src}
                 className="col-start-2 row-start-2 size-full rounded-lg object-cover max-lg:hidden"
-            />
+            /> */}
             {/* <img
                 alt={product.images[3].alt}
                 src={product.images[3].src}
@@ -630,7 +630,7 @@ export default function DetailClass() {
 
                 <form className="mt-10">
                 {/* Colors */}
-                <div>
+                {/* <div>
                     <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
                     <fieldset aria-label="Choose a color" className="mt-4">
@@ -655,7 +655,7 @@ export default function DetailClass() {
                         ))}
                     </div>
                     </fieldset>
-                </div>
+                </div> */}
 
                 {/* Sizes */}
                 <div className="mt-10">
