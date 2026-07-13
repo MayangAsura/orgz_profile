@@ -102,7 +102,7 @@ const DonutChart = ({ item, productId }) => {
                         orgz_users!inner (
                             orgz_cities (
                                 city_id,
-                                name
+                                city
                             )
                         )
                     ),
@@ -120,7 +120,7 @@ const DonutChart = ({ item, productId }) => {
                 const cityMap = new Map()
 
                 orderDetails.forEach(detail => {
-                    const cityName = detail.orgz_orders.orgz_users?.orgz_cities?.name || 'Unknown City'
+                    const cityName = detail.orgz_orders.orgz_users?.orgz_cities?.city || '-'
                     const amount = detail.amount || 1
 
                     if (cityMap.has(cityName)) {
@@ -192,7 +192,7 @@ const DonutChart = ({ item, productId }) => {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-96">
-                <p className="text-gray-500">Loading chart data...</p>
+                <p className="text-gray-500">Loading data...</p>
             </div>
         )
     }

@@ -109,7 +109,7 @@ export default function GraphAnalytics() {
 
       <div className="flex flex-wrap mt-4">
         <div className="w-full mb-12 xl:mb-0 px-4">
-          {/* <LatestTransactions /> */}
+          <LatestTransactions />
         </div>
     </div>
     </>

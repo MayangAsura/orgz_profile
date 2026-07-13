@@ -165,8 +165,8 @@ const NewDataTable = ({
 				case 'product':
 					navigate('/products/add')
 					break;
-				case 'formal-products':
-					navigate('/formal-products/add')
+				case 'formal-programs':
+					navigate('/formal-programs/add')
 					break;
 				case 'transactions':
 					// navigate('/transactions/add')

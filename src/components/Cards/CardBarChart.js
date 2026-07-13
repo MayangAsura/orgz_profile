@@ -118,17 +118,17 @@ export default function CardBarChart({productId}) {
     let { data: orgz_products, error_p } = await supabase
                                           .from('orgz_products')
                                           .select('id')
-                                          .order('id', {ascending: false})
+                                          .order('created_at', {ascending: false})
                                           .limit(1)
                                           .single()
     if(orgz_products){
       let { data: orgz_orders, error_o } = await supabase
                                         .from('orgz_orders')
-                                        .select('total_price, orgz_order_details(orgz_product_id)')
+                                        .select('total_price.sum(), orgz_order_details(orgz_product_id)')
                                         .eq('orgz_order_details.orgz_product_id', orgz_products.id)
                                         .single()
       if(orgz_orders){
-        setItems([items, orgz_orders.total_price])
+        setItems( prev => [...prev, orgz_orders.sum])
       }
 
     }
@@ -164,7 +164,7 @@ export default function CardBarChart({productId}) {
                                         .eq('orgz_order_details.orgz_product_id', product)
                                         .single()
       if(orgz_orders){
-        setItems([items, orgz_orders.total_price])
+        setItems(item => [...item, orgz_orders.total_price])
       }
 
     }
@@ -181,7 +181,7 @@ export default function CardBarChart({productId}) {
                 Performance
               </h6>
               <h2 className="text-blueGray-700 text-xl font-semibold">
-                Total orders
+                Total Pesanan
               </h2>
             </div>
           </div>

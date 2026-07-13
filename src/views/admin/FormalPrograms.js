@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import CardTable from "../../components/Cards/CardTable.js";
 import Datatable from "../../components/Tables/Datatables.js"
 import NewDataTable from "../../components/Tables/NewDatatables.js";
-import { data } from "../../utils/datas/formal_products.js";
+import { data } from "../../utils/datas/formal_programs.js";
 import { toast } from "react-toastify";
 
 export default function FormalProducts() {
@@ -34,7 +34,7 @@ export default function FormalProducts() {
         <div className="w-full mb-12 px-4">
           <NewDataTable
             data={datas}
-            type="formal-products"
+            type="formal-programs"
             searchBar
             excelExport
             AddNew

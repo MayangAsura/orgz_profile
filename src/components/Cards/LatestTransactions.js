@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import supabase from '../../configs/supabase.js'
+import { formatCurrency } from "utils/formatCurrency.js";
 
 // components
 
@@ -88,20 +89,20 @@ export default function LatestTransactions() {
                 <>
                   <tr>
                     <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                      {transaction.orgz_users.full_name}
+                      {transaction.orgz_users?.full_name}
                     </th>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {transaction.orgz_users.phone_number}
+                      {transaction.orgz_users?.phone_number}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {transaction.orgz_packets.name}
+                      {transaction.orgz_packets?.name}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {transaction.orgz_order_details[0]?.orgz_products.title}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       <i className="fas fa-arrow-down text-blue-500 mr-4"></i>
-                      {transaction.total_price}
+                      {formatCurrency(transaction?.total_price, 'IDR')}
                     </td>
                   </tr>
                 </>
