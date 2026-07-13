@@ -29,7 +29,7 @@ export default function GraphAnalytics() {
     if (selectedProduct) {
       console.log('Selected product:', selectedProduct)
     }
-  }, [selectedProduct])
+  }, [])
 
   const getClasses = async (type) => {
     setLoading(true)
@@ -100,7 +100,7 @@ export default function GraphAnalytics() {
 
       <div className="flex flex-wrap">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-          <DonutChart item="domicili" productId={selectedProduct} />
+          <DonutChart item="domicile" productId={selectedProduct} />
         </div>
         <div className="w-full xl:w-4/12 px-4">
           <CardBarChart productId={selectedProduct} />
@@ -109,7 +109,7 @@ export default function GraphAnalytics() {
 
       <div className="flex flex-wrap mt-4">
         <div className="w-full mb-12 xl:mb-0 px-4">
-          <LatestTransactions />
+          {/* <LatestTransactions /> */}
         </div>
     </div>
     </>

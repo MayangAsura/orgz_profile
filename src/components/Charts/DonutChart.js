@@ -23,8 +23,8 @@ const DonutChart = ({ item, productId }) => {
     const fetchChartData = async () => {
         setLoading(true)
         try {
-            if (item === 'domicili') {
-                await getDataDomicili()
+            if (item === 'domicile') {
+                await getDataDomicile()
             } else if (item === 'packet') {
                 await getDataPacket()
             }
@@ -91,7 +91,7 @@ const DonutChart = ({ item, productId }) => {
         }
     }
 
-    const getDataDomicili = async () => {
+    const getDataDomicile = async () => {
         try {
             // Fetch order details with user and city information
             const { data: orderDetails, error } = await supabase
