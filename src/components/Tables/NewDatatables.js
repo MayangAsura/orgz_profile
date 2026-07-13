@@ -162,11 +162,11 @@ const NewDataTable = ({
 	const addNewItem = () => {
 		try {
 			switch (type){
-				case 'product':
-					navigate('/products/add')
+				case 'products':
+					navigate('/admin/classes/add')
 					break;
 				case 'formal-programs':
-					navigate('/formal-programs/add')
+					navigate('/admin/formal-programs/add')
 					break;
 				case 'transactions':
 					// navigate('/transactions/add')

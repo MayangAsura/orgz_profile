@@ -12,7 +12,7 @@ let datas = []
 
 const { data: products, error } = supabase
 									.from('orgz_products')
-									.select('id,type,title,slug,thumbnail,price,views,rating,subcategory_id,promote_text,description, orgz_subcategory(name, code)')
+									.select('id,type,title,slug,thumbnail,price,views,rating,subcategory_id,promote_text,description,orgz_subcategory(name, code)')
 									.eq('orgz_id', ORGZ_ID)
 									.eq('type', 'classes')
 
@@ -25,7 +25,7 @@ if(products && products.length > 0){
 }else{
 	// setError(true)
 	// setErrorMessage(error)
-	toast('Error retrive data from server.')
+	toast('Error retrive data from server.', error)
 }
 const types = datas['type']
 

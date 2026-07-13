@@ -37,6 +37,7 @@ import Register from './views/auth/Register.js';
 import Dashboard from './views/admin/Dashboard.js';
 import FormalProducts from './views/admin/FormalPrograms.js';
 import Products from './views/admin/Products';
+import FormalPrograms from './views/admin/FormalPrograms.js';
 import ChangePassword from './views/admin/ChangePassword.js';
 import Transactions from "./views/admin/Transactions.js";
 import Settings from './views/admin/Settings.js';
@@ -93,7 +94,7 @@ function App() {
           <Route path="/admin/classes/add" element={<ProductCreate/>} />
           <Route path="/admin/classes/:id" element={<DetailProduct/>} />
           <Route path="/admin/classes/:id/edit" element={<ProductEdit/>} />
-          <Route path="/admin/formal-programs" element={<FormalProducts/>} />
+          <Route path="/admin/formal-programs" element={<FormalPrograms/>} />
           <Route path="/admin/formal-programs/add" element={<FormalProgramCreate/>} />
           <Route path="/admin/formal-programs/:id" element={<DetailFormalProgram/>} />
           <Route path="/admin/formal-programs/:id/edit" element={<FormalProgramEdit/>} />

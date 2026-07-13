@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import supabase from "../../configs/supabase";
+import { formatCurrency } from "utils/formatCurrency";
 import { toast } from "react-toastify";
 import { Id } from "../../utils/auth/users";
 
@@ -11,16 +12,67 @@ export default function FormalProgramCreate() {
   const { orgzId } = useSelector((state) => state.authReducer);
   const navigate = useNavigate();
 
+  const [categories, setCategories] = useState([
+    {
+      code: 'kids',
+      name: 'Anak-Anak'
+    },
+    {
+      code: 'teenagers',
+      name: 'Remaja'
+    },
+    {
+      code: 'public',
+      name: 'Umum'
+    },
+    {
+      code: 'akhawat',
+      name: 'Muslimah'
+    }
+  ]);
+  const [subcategories, setSubcategories] = useState([]);
+  const [programs, setPrograms] = useState([]);
+
   const [form, setForm] = useState({
     title: "",
     slug: "",
     thumbnail: null,
+    quota: 0,
+    price: 0,
+    category:"",
+    subcategory_id: "",
+    description: "",
     submission_start: "",
     submission_end: "",
     status: "opened",
   });
   const [previewUrl, setPreviewUrl] = useState("");
   const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    fetchSubcategories();
+    fetchPrograms();
+  }, []);
+
+  const fetchSubcategories = async () => {
+    const { data, error } = await supabase
+      .from("orgz_subcategory")
+      .select("id, name")
+      .eq('orgz_id', ORGZ_ID || orgzId)
+      .is("deleted_at", null);
+    if (!error) setSubcategories(data);
+    else toast.error("Failed to load subcategories.");
+  };
+
+  const fetchPrograms = async () => {
+    const { data, error } = await supabase
+      .from("orgz_programs")
+      .select("id, title")
+      .eq('organization_id', ORGZ_ID || orgzId)
+      .is("deleted_at", null);
+    if (!error) setPrograms(data);
+    else toast.error("Failed to load programs.");
+  };
 
   const handleInputChange = (field, value) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -51,11 +103,11 @@ export default function FormalProgramCreate() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.title || !form.submission_start || !form.submission_end) {
+    if (!form.title || !form.started_at || !form.ended_at) {
       toast.warn("Name, start date, and end date are required.");
       return;
     }
-    if (form.submission_start > form.submission_end) {
+    if (form.started_at > form.ended_at) {
       toast.warn("Start date cannot be after end date.");
       return;
     }
@@ -71,14 +123,18 @@ export default function FormalProgramCreate() {
         title: form.title,
         slug: form.slug || form.title.toLowerCase().replace(/\s+/g, "-"),
         thumbnail: imageUrl,
-        submission_start: form.submission_start,
-        submission_end: form.submission_end,
+        started_at: form.started_at,
+        ended_at: form.ended_at,
         status: form.status,
+        quota: form.quota,
+        price: parseFloat(form.price),
+        subcategory_id: form.subcategory_id || null,
+        orgz_program_id: form.orgz_program_id || null,
+        description: form.description,
         created_by: Id,
-        created_at: new Date().toISOString(),
       };
 
-      const { error } = await supabase.from("orgz_formal_programs").insert([payload]);
+      const { error } = await supabase.from("orgz_formal_programs").insert([payload]).select();
       if (error) throw error;
 
       toast.success("Program created!");
@@ -149,6 +205,95 @@ export default function FormalProgramCreate() {
                       onChange={(e) => handleInputChange("slug", e.target.value)}
                     />
                   </div>
+
+                  {/* Price */}
+                  <div className="relative w-full mb-3">
+                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                      Harga *
+                    </label>
+                    <input
+                      type="number"
+                      className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                      placeholder="0"
+                      value={form.price}
+                      onChange={(e) => handleInputChange("price", e.target.value)}
+                      required
+                    />
+                    {form.price && (
+                      <span className="text-xs text-blueGray-500">
+                        {formatCurrency(parseFloat(form.price), "IDR")}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Quota */}
+                  <div className="relative w-full mb-3">
+                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                      Kuota *
+                    </label>
+                    <input
+                      type="number"
+                      className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                      placeholder="Kuota"
+                      value={form.quota}
+                      onChange={(e) => handleInputChange("quota", e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="relative w-full mb-3">
+                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                      Kategori
+                    </label>
+                    <select
+                      className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                      value={form.category}
+                      onChange={(e) => handleInputChange("category", e.target.value)}
+                    >
+                      <option value="">None</option>
+                      {categories.map((sub) => (
+                        <option key={sub.code} value={sub.code}>
+                          {sub.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="relative w-full mb-3">
+                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                      Sub Kategori
+                    </label>
+                    <select
+                      className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                      value={form.subcategory_id}
+                      onChange={(e) => handleInputChange("subcategory_id", e.target.value)}
+                    >
+                      <option value="">None</option>
+                      {subcategories.map((sub) => (
+                        <option key={sub.id} value={sub.id}>
+                          {sub.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="relative w-full mb-3">
+                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                      Program
+                    </label>
+                    <select
+                      className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                      value={form.orgz_program_id}
+                      onChange={(e) => handleInputChange("orgz_program_id", e.target.value)}
+                    >
+                      <option value="">None</option>
+                      {programs.map((prog) => (
+                        <option key={prog.id} value={prog.id}>
+                          {prog.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
                 <div className="w-full lg:w-6/12 px-4">
@@ -161,8 +306,8 @@ export default function FormalProgramCreate() {
                       <input
                         type="date"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                        value={form.submission_start}
-                        onChange={(e) => handleInputChange("submission_start", e.target.value)}
+                        value={form.started_at}
+                        onChange={(e) => handleInputChange("started_at", e.target.value)}
                         required
                       />
                     </div>
@@ -173,9 +318,8 @@ export default function FormalProgramCreate() {
                       <input
                         type="date"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                        value={form.submission_end}
-                        onChange={(e) => handleInputChange("submission_end", e.target.value)}
-                        required
+                        value={form.ended_at}
+                        onChange={(e) => handleInputChange("ended_at", e.target.value)}
                       />
                     </div>
                   </div>

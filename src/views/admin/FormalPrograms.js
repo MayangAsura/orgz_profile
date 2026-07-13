@@ -9,7 +9,7 @@ import NewDataTable from "../../components/Tables/NewDatatables.js";
 import { data } from "../../utils/datas/formal_programs.js";
 import { toast } from "react-toastify";
 
-export default function FormalProducts() {
+export default function FormalPrograms() {
   const [datas, setDatas] = useState([])
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
@@ -37,7 +37,7 @@ export default function FormalProducts() {
             type="formal-programs"
             searchBar
             excelExport
-            AddNew
+            addNew
             pageSizeControl
             pagination
             removableRows

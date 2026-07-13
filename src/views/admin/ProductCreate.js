@@ -18,11 +18,30 @@ export default function ProductCreate() {
     slug: "",
     thumbnail: null,
     price: "",
+    category: "",
     subcategory_id: "",
-    program_id: "",
+    orgz_program_id: "",
     promote_text: [],
     description: "",
   });
+  const [categories, setCategories] = useState([
+    {
+      code: 'kids',
+      name: 'Anak-Anak'
+    },
+    {
+      code: 'teenagers',
+      name: 'Remaja'
+    },
+    {
+      code: 'public',
+      name: 'Umum'
+    },
+    {
+      code: 'akhawat',
+      name: 'Muslimah'
+    }
+  ]);
   const [subcategories, setSubcategories] = useState([]);
   const [programs, setPrograms] = useState([]);
   const [uploading, setUploading] = useState(false);
@@ -36,6 +55,7 @@ export default function ProductCreate() {
     const { data, error } = await supabase
       .from("orgz_subcategory")
       .select("id, name")
+      .eq('orgz_id', ORGZ_ID || orgzId)
       .is("deleted_at", null);
     if (!error) setSubcategories(data);
     else toast.error("Failed to load subcategories.");
@@ -45,6 +65,7 @@ export default function ProductCreate() {
     const { data, error } = await supabase
       .from("orgz_programs")
       .select("id, title")
+      .eq('organization_id', ORGZ_ID || orgzId)
       .is("deleted_at", null);
     if (!error) setPrograms(data);
     else toast.error("Failed to load programs.");
@@ -94,7 +115,7 @@ export default function ProductCreate() {
 
     const { data } = supabase.storage.from("backpage").getPublicUrl(path);
     return data.publicUrl
-    
+
   };
 
   const handleSubmit = async (e) => {
@@ -113,13 +134,15 @@ export default function ProductCreate() {
 
       const { error } = await supabase.from("orgz_products").insert([
         {
+          orgz_id: orgzId || ORGZ_ID,
           type: formData.type,
           title: formData.title,
           slug: formData.slug || formData.title.toLowerCase().replace(/\s+/g, "-"),
           thumbnail: thumbnailUrl,
           price: parseFloat(formData.price),
+          category: formData.category,
           subcategory_id: formData.subcategory_id || null,
-          program_id: formData.program_id || null,
+          orgz_program_id: formData.orgz_program_id || null,
           promote_text: formData.promote_text.filter(Boolean),
           description: formData.description,
           created_by: Id,
@@ -152,7 +175,7 @@ export default function ProductCreate() {
                   <div className="w-full lg:w-6/12 px-4">
                     <div className="relative w-full mb-3">
                       <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Type *
+                        Tipe Produk *
                       </label>
                       <select
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -160,17 +183,17 @@ export default function ProductCreate() {
                         onChange={(e) => handleInputChange("type", e.target.value)}
                         required
                       >
-                        <option value="">Select type</option>
-                        <option value="course">Course</option>
+                        <option value="">Pilih Tipe</option>
+                        <option value="classes">Kelas</option>
                         <option value="ebook">Ebook</option>
                         <option value="webinar">Webinar</option>
-                        <option value="physical">Physical</option>
+                        {/* <option value="physical">Physical</option> */}
                       </select>
                     </div>
 
                     <div className="relative w-full mb-3">
                       <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Title *
+                        Judul *
                       </label>
                       <input
                         type="text"
@@ -197,7 +220,7 @@ export default function ProductCreate() {
 
                     <div className="relative w-full mb-3">
                       <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Price *
+                        Harga *
                       </label>
                       <input
                         type="number"
@@ -216,7 +239,25 @@ export default function ProductCreate() {
 
                     <div className="relative w-full mb-3">
                       <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                        Subcategory
+                        Kategori
+                      </label>
+                      <select
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                        value={formData.category}
+                        onChange={(e) => handleInputChange("category", e.target.value)}
+                      >
+                        <option value="">None</option>
+                        {categories.map((sub) => (
+                          <option key={sub.code} value={sub.code}>
+                            {sub.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="relative w-full mb-3">
+                      <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                        Sub Kategori
                       </label>
                       <select
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
@@ -238,8 +279,8 @@ export default function ProductCreate() {
                       </label>
                       <select
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                        value={formData.program_id}
-                        onChange={(e) => handleInputChange("program_id", e.target.value)}
+                        value={formData.orgz_program_id}
+                        onChange={(e) => handleInputChange("orgz_program_id", e.target.value)}
                       >
                         <option value="">None</option>
                         {programs.map((prog) => (

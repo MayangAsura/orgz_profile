@@ -23,7 +23,7 @@ const product = {
   ],
   images: [
     {
-      src: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
+      src: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/backpage/products/Talaqqi.png',
       alt: 'Two each of gray, white, and black shirts laying flat.',
     },
     {
@@ -142,6 +142,10 @@ const availableClass = [
             { id: 3, name: 'Clothing', href: '#' },
         ],
         images: [
+            {
+            src: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/backpage/products/Talaqqi.png',
+            alt: 'Two each of gray, white, and black shirts laying flat.',
+            },
             {
             src: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
             alt: 'Two each of gray, white, and black shirts laying flat.',
@@ -570,18 +574,19 @@ export default function DetailClass() {
             </nav> */}
 
             {/* Image gallery */}
-            <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-8 lg:px-8">
+            <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:max-w-7xl lg:grid-cols-2 lg:gap-8 lg:px-8">
+                {/* lg:grid  */}
             {/* <img
                 alt={product.images[0].alt}
                 src={product.images[0].src}
                 className="row-span-2 aspect-[3/4] size-full rounded-lg object-cover max-lg:hidden"
             /> */}
-            {/* <img
-                alt={class_data.images[1].alt}
-                src={class_data.images[1].src}
+            <img
+                alt={class_data.images[0].alt}
+                src={class_data.images[0].src}
                 className="w-full size-full rounded-lg object-cover max-lg:hidden"
                 // col-start-2 aspect-[3/2]
-            /> */}
+            />
             {/* <img
                 alt={product.images[2].alt}
                 src={product.images[2].src}
