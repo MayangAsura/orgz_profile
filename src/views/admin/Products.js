@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import CardTable from "../../components/Cards/CardTable.js";
 import Datatable from "../../components/Tables/Datatables.js"
 import NewDataTable from "../../components/Tables/NewDatatables";
-import { data } from "../../utils/datas/products.js";
+import { getData } from "../../utils/datas/products.js";
 import { toast } from "react-toastify";
 
 export default function Products() {
@@ -15,12 +15,15 @@ export default function Products() {
   const [errorMessage, setErrorMessage] = useState("")
 
   useEffect(() => {
+
+    const data = getData()
+
     if(data){
       setDatas(data)
     }
     console.log('products', data, datas)
 
-  },[data])
+  },[getData()])
   return (
     <>
       <div className="flex flex-wrap">

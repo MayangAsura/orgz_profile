@@ -270,7 +270,7 @@ export default function Landing() {
                 {/* <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
                   <i className="fas fa-user-friends text-xl"></i>
                 </div> */}
-                <h3 className="text-3xl mb-2 font-semibold leading-normal items-center text-center">
+                <h3 className="text-3xl text-gray-900 mb-2 font-semibold leading-normal items-center text-center">
                   Pilihan Program
                 </h3>
               </div>
@@ -523,7 +523,7 @@ export default function Landing() {
                     <button className="w-full rounded-full border border-neutral-950 py-2 text-sm font-medium transition-colors hover:bg-neutral-950 hover:text-neutral-100"
                       onClick={handleMoreClasses}
                     >
-                      Ke halaman Kelas
+                      Selengkapnya
                     </button>
 
                   </div>
@@ -627,7 +627,7 @@ export default function Landing() {
                         {testimonials.slice(slideIndex * 3, slideIndex * 3 + 3).map((testimonial, cardIndex) => (
                           <div
                             key={cardIndex}
-                            className="w-full md:w-1/3 px-4 mb-8"
+                            className="w-1/3 md:w-1/3 px-4 mb-8"
                           >
                             <div className="bg-white p-6 rounded-xl shadow-lg h-full flex flex-col">
 

@@ -15,6 +15,8 @@ export default function FormalPrograms() {
   const [errorMessage, setErrorMessage] = useState("")
 
   useEffect(() => {
+
+    // const data = getData()
     if(data){
       setDatas(data)
     }

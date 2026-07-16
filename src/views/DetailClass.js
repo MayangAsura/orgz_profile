@@ -686,8 +686,7 @@ export default function DetailClass() {
                                     type="radio"
                                     disabled={!packet.is_stock}
                                     onClick={() => handleFormData('packet', packet.code)}
-                                    className="absolute appearance-none disabled:cursor-not-allowed"
-                                    // inset-0
+                                    className="inset-0 checked:appearance-none appearance-none absolute disabled:cursor-not-allowed"
                                 />
                                 <span className="text-sm font-medium uppercase text-gray-900 group-has-[:checked]:text-white">
                                 {packet.name}
@@ -773,7 +772,7 @@ export default function DetailClass() {
                 <button
                     type="button"
                     data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-                    className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 disabled:bg-gray-500 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="my-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 disabled:bg-gray-500 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     onClick={() => setModalOpen(true)}
                     disabled={form_order.packet === ''}
 

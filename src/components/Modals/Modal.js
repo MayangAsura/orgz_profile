@@ -15,7 +15,8 @@ const Modal = ({isOpen, onClose, children, title, form_order, form_field}) => {
     return (
 
     // <div id="authentication-modal" tabIndex="-1" aria-hidden="true" className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0  flex items-center justify-center z-50">
+        {/* bg-gray-400 bg-opacity-100 */}
         <div className="bg-white dark:bg-gray-800 p-6 rounded shadow-lg max-w-md w-full relative">
         {/* <div className="relative p-4 w-full max-w-md max-h-full"> */}
             {/* <!-- Modal content --> */}

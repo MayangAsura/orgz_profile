@@ -10,7 +10,7 @@ const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 let datas = []
 
 
-const { data: orgz_formal_programs, error } = supabase
+const { data: orgz_formal_programs, error } = await supabase
 									.from('orgz_formal_programs')
 									.select('id,title,slug,thumbnail,price,views,rating,subcategory_id,promote_text,description, orgz_subcategory(name, code)')
 									.eq('orgz_id', ORGZ_ID)
@@ -19,7 +19,7 @@ const { data: orgz_formal_programs, error } = supabase
 if(orgz_formal_programs && orgz_formal_programs.length > 0){
 	console.log('formal_programs--', orgz_formal_programs)
 
-	datas = orgz_formal_programs.map(product => {return {id: product.id, type: product.type, title: product.title, slug: product.slug, thumbnail: product.thumbnail, price: product.price, views: product.views, rating:product.rating, subcategory_id: product.subcategory_id, subcategory_code: product.orgz_subcategory.code, subcategory_name: product.orgz_subcategory.name}})
+	datas = orgz_formal_programs.map(product => {return {id: product.id, type: product.type, title: product.title, slug: product.slug, thumbnail: product.thumbnail, price: product.price, views: product.views, rating:product.rating, subcategory_id: product.subcategory_id, subcategory_code: product.orgz_subcategory?.code, subcategory_name: product.orgz_subcategory?.name}})
 
 	console.log('formal_programs-', datas)
 }else{
