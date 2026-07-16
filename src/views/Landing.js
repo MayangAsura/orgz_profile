@@ -70,6 +70,7 @@ export default function Landing() {
   }, [currentSlide, testimonials.length]);
 
   const handleNavigation = menu => {
+    console.log('menu', menu)
     if(menu === 'program')
       programRef.current.focus()
     if(menu === 'our-classes')
@@ -97,7 +98,7 @@ export default function Landing() {
 
   return (
     <>
-      <Navbar transparent />
+      <Navbar transparent goToClass={handleNavigation} />
       <main>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
@@ -131,7 +132,30 @@ export default function Landing() {
           </div>
           {/* <div
             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
-            style={{ transform: "translateZ(0)" }}
+            style={{ transform: "translateZ(0)", backgroundImage: `url(${backgroundImage2})` }}
+          >
+            <span
+              id="blackOverlay"
+              className="w-full h-full absolute opacity-75 bg-black"
+            ></span>
+            <svg
+              className="absolute bottom-0 overflow-hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className="text-[#285F9F] fill-current"
+                points="2560 0 2560 100 0 100"
+              ></polygon>
+            </svg>
+          </div> */}
+          {/* <div
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+            style={{ transform: "translateX(0)", backgroundImage: `url(/images/AkhwatFillah-program-section-background.png)` }}
           >
             <svg
               className="absolute bottom-0 overflow-hidden"
@@ -152,12 +176,12 @@ export default function Landing() {
 
         {/* <section className="p-8 bg-blueGray-100" >
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap"> */}
-              {/* <div className="grid w-full place-content-center bg-gradient-to-br from-indigo-500 to-violet-500 px-4 py-12 text-slate-900">
+            <div className="flex flex-wrap">
+              <div className="grid w-full place-content-center bg-gradient-to-br from-indigo-500 to-violet-500 px-4 py-12 text-slate-900">
 
 
-              </div> */}
-            {/* </div>
+              </div>
+             </div>
             </div>
         </section> */}
 
@@ -167,7 +191,7 @@ export default function Landing() {
         {/* <p className="text-2xl font-semibold mb-6 text-center text-blueGray-800 bg-blueGray-100">Keunggulan Kami</p> */}
 
 
-        <section className="pb-20 bg-blueGray-200 -mt-24" style={{backgroundImage: `url(/images/AkhwatFillah-program-section-background.png)`, backgroundSize: 'cover', transform: "translateZ(0)"}}>
+        <section className="pb-20 bg-blueGray-200" style={{backgroundImage: `url(/images/AkhwatFillah-program-section-background.png)`, backgroundSize: 'cover', transform: "translateZ(0)"}}>
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 gap-2">
               {/* flex flex-wrap */}
@@ -627,7 +651,7 @@ export default function Landing() {
                         {testimonials.slice(slideIndex * 3, slideIndex * 3 + 3).map((testimonial, cardIndex) => (
                           <div
                             key={cardIndex}
-                            className="w-1/3 md:w-1/3 px-4 mb-8"
+                            className="w-full md:w-1/3 lg:w-1/3 px-4 mb-8"
                           >
                             <div className="bg-white p-6 rounded-xl shadow-lg h-full flex flex-col">
 

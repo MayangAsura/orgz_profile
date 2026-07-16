@@ -26,7 +26,7 @@ export default function Footer({programRef, classRef, testimonialRef, handleNavi
         </div>
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-center lg:text-left">
-            <div className="w-full lg:w-6/12 px-4">
+            <div className="w-full lg:w-6/12 px-4 mb-2">
               <h4 className="text-3xl font-semibold">Rumah Qur’an Al Ayman</h4>
               <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
                 Belajar Al Qur'an dan Tahsin Online
@@ -69,7 +69,7 @@ export default function Footer({programRef, classRef, testimonialRef, handleNavi
               </div>
             </div>
             <div className="w-full lg:w-6/12 px-4">
-              <div className="flex flex-wrap items-top mb-6">
+              <div className="flex flex-wrap gap-3 items-top mb-6">
                 <div className="w-full lg:w-4/12 px-4 ml-auto">
                   <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
                     Link Cepat
