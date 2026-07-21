@@ -8,6 +8,7 @@ import MultiTextInput from '../components/Texts/MultiText.js'
 import { CheckCircleIcon, TrashIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { FaRegCircleXmark} from 'react-icons/fa6'
 import axios from 'axios'
+import supabase from '../configs/supabase'
 import { toast } from 'react-toastify'
 
 import { formatCurrency } from "../utils/formatCurrency";
@@ -368,11 +369,37 @@ export default function DetailClass() {
         // }
         // const new_names = form_order.names.map([name,key] => )
         console.log(form_order.names.join(", "))
+
+        // getProduct()
+
     }, [id, class_data, form_order.names, form_order.packet, name])
+
+    const getProduct = async () => {
+        try {
+
+            const {orgz_products, error } = await supabase.from('orgz_products')
+                                                .select('*, orgz_product_packets(orgz_packets(code, name, is_stock))')
+                                                .eq('id', id)
+                                                .eq('orgz_id', ORGZ_ID)
+                                                .is('orgz_program_packets.deleted_at', null)
+                                                .is('orgz_program_packets.orgz_packets.deleted_at', null)
+                                                .is('deleted_at', null)
+
+
+            if(orgz_products.length > 0 ){
+                setClassData(orgz_products[0])
+            }
+
+        } catch (error) {
+            toast.error("Failed, Failed to get product")
+
+        }
+    }
 
     const classNames = (...classes) => {
         return classes.filter(Boolean).join(' ')
     }
+
     const checkPromoCode = async () => {
         // || form_order.category == ''
         setIsValidPromoCode(false)
@@ -673,7 +700,7 @@ export default function DetailClass() {
 
                     <fieldset aria-label="Choose a size" className="mt-4">
                         <div className="grid grid-cols-4 gap-3">
-                            {class_data?.packets.map((packet) => (
+                            {class_data?.map((packet) => (
                             <label
                                 key={packet.code}
                                 aria-label={packet.name}
@@ -681,7 +708,7 @@ export default function DetailClass() {
                             >
                                 <input
                                     defaultValue={packet.code}
-                                    defaultChecked={packet === class_data?.packets[0]}
+                                    defaultChecked={packet === class_data?.[0]}
                                     name="packet"
                                     type="radio"
                                     disabled={!packet.is_stock}
@@ -693,6 +720,26 @@ export default function DetailClass() {
                                 </span>
                             </label>
                             ))}
+                            {/* {class_data?.orgz_product_packets.map((packet) => (
+                            <label
+                                key={packet.orgz_packets.code}
+                                aria-label={packet.orgz_packets.name}
+                                className="group relative flex items-center justify-center rounded-md border border-gray-300 bg-white p-3 has-[:checked]:border-indigo-600 has-[:disabled]:border-gray-400 has-[:checked]:bg-indigo-600 has-[:disabled]:bg-gray-200 has-[:disabled]:opacity-25 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600"
+                            >
+                                <input
+                                    defaultValue={packet.orgz_packets.code}
+                                    defaultChecked={packet.orgz_packets === class_data?.orgz_product_packets[0]}
+                                    name="packet"
+                                    type="radio"
+                                    disabled={!packet.orgz_packets.is_stock}
+                                    onClick={() => handleFormData('packet', packet.orgz_packets.code)}
+                                    className="inset-0 checked:appearance-none appearance-none absolute disabled:cursor-not-allowed"
+                                />
+                                <span className="text-sm font-medium uppercase text-gray-900 group-has-[:checked]:text-white">
+                                {packet.orgz_packets.name}
+                                </span>
+                            </label>
+                            ))} */}
                         </div>
                     </fieldset>
                 </div>

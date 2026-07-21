@@ -30,6 +30,11 @@ import CardTestimonial from "../components/Cards/CardTestimonial";
 import ProductCard from "../components/Cards/ProductCard";
 import OrderHitory from "./customers/OrderHistory";
 import HoverFormalProgramCard from "../components/Cards/HoverFormalProgramCard";
+import supabase from "../configs/supabase.js";
+
+import { toast } from "react-toastify";
+
+const ORGZ_ID = import.meta.env.REACT_APP_ORGZ_ID
 
 const programs = [
   {featured_image: program1, title: "Tashih Tilawah Al Qur'an", description: "Program perbaikan bacaan Al Qur'an khusus Muslimah dan Anak-Anak"},
@@ -54,6 +59,8 @@ const availableClass = [
 
 export default function Landing() {
   const navigate = useNavigate()
+  const [products, setProducts] = useState([])
+  const [formalPrograms, setFormalPrograms] = useState([])
   const programRef = useRef(null)
   const testimonialRef = useRef(null)
   const classRef = useRef(null)
@@ -67,7 +74,30 @@ export default function Landing() {
 
       return () => clearInterval(interval);
     }
-  }, [currentSlide, testimonials.length]);
+
+    getProducts()
+
+    console.log('products', currentSlide)
+
+  }, [currentSlide, testimonials.length, products]);
+
+  const getProducts = async () => {
+    try {
+
+      const {orgz_products, error} = await supabase.from("orgz_products")
+                                          .select('*')
+                                          .eq('orgz_id', ORGZ_ID)
+                                          .is('deleted_at', null)
+
+      if(orgz_products.length > 0){
+        setProducts(orgz_products)
+      }
+
+    } catch (error) {
+      toast.error("Failed, Failed to get available classes.")
+
+    }
+  }
 
   const handleNavigation = menu => {
     console.log('menu', menu)
@@ -651,7 +681,7 @@ export default function Landing() {
                         {testimonials.slice(slideIndex * 3, slideIndex * 3 + 3).map((testimonial, cardIndex) => (
                           <div
                             key={cardIndex}
-                            className="w-full md:w-1/3 lg:w-1/3 px-4 mb-8"
+                            className=" md:w-1/3 px-4 mb-8"
                           >
                             <div className="bg-white p-6 rounded-xl shadow-lg h-full flex flex-col">
 
