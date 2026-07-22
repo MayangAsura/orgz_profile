@@ -98,6 +98,10 @@ function App() {
           <Route path="/admin/formal-programs/add" element={<FormalProgramCreate/>} />
           <Route path="/admin/formal-programs/:id" element={<DetailFormalProgram/>} />
           <Route path="/admin/formal-programs/:id/edit" element={<FormalProgramEdit/>} />
+          <Route path="/admin/galleries" element={<Galleries/>} />
+          <Route path="/admin/formal-programs/add" element={<FormalProgramCreate/>} />
+          <Route path="/admin/formal-programs/:id" element={<DetailFormalProgram/>} />
+          <Route path="/admin/formal-programs/:id/edit" element={<FormalProgramEdit/>} />
           <Route path="/admin/transactions" element={<Transactions/>} />
           <Route path="/admin/transactions/:id" element={<DetailTransactions/>} />
           <Route path="/admin/balances" element={<WithDraws/>} />

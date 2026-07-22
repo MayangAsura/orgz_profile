@@ -38,24 +38,52 @@ const ORGZ_ID = import.meta.env.REACT_APP_ORGZ_ID
 
 const programs = [
   {featured_image: program1, title: "Tashih Tilawah Al Qur'an", description: "Program perbaikan bacaan Al Qur'an khusus Muslimah dan Anak-Anak"},
-  {featured_image: program2, title: "Tahfidz Al Qur'an", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
-  {featured_image: program3, title: "Kelas Bahasa Arab", description: "Program belajar bahasa Arab bersama asatidzah yang berkompeten"},
-  {featured_image: program4, title: "Dauroh/kajian rutin ilmu syar’i", description: "Kajian dan Daurah ilmu syar'i bersama asatidzah dan pakar ilmu membahas dan menjawab persoalan dan problematika umat"},
+  {featured_image: program2, title: "Tahsin dan Tahfidz Al Qur'an", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
+  {featured_image: program3, title: "Bahasa Arab", description: "Program belajar bahasa Arab bersama asatidzah yang berkompeten"},
+  {featured_image: program2, title: "Ilmu Tajwid", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
+  {featured_image: program3, title: "Dauroh dan Pelatihan Muslimah", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
+  {featured_image: program2, title: "Program Ramadhan dan Holiday", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
 
 ]
+// const programs = [
+//   {featured_image: program1, title: "Tashih Tilawah Al Qur'an", description: "Program perbaikan bacaan Al Qur'an khusus Muslimah dan Anak-Anak"},
+  // {featured_image: program2, title: "Tahfidz Al Qur'an", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
+  // {featured_image: program3, title: "Kelas Bahasa Arab", description: "Program belajar bahasa Arab bersama asatidzah yang berkompeten"},
+//   {featured_image: program4, title: "Dauroh/kajian rutin ilmu syar’i", description: "Kajian dan Daurah ilmu syar'i bersama asatidzah dan pakar ilmu membahas dan menjawab persoalan dan problematika umat"},
+
+// ]
 const testimonials = [
-  {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
-  {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
-  {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
-  {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+  {message: "Alhamdulillaah menambah ilmu lg buat ana yg msh blm konsisten dlm membaca Al Quran secara tartil", full_name: "Sri Hastuty", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+  {message: "Maasyaa Allah,  daurah yg isinya 'daging' semua. Dikemas dengan sangat rapi dan mudah dipahami. Poinnya adalah ana jadi melek, tersadarkan, tercerahkan, dan termotivasi untuk terus meng upgrade diri. Jazaakillahu khayroo ustadzah sudah memberikan ilmu yg sangat luar biasa ini, baarakallahu fiiky 🌻. Jazaakumullahu khayroo untuk team RQA yang telah menjadi washilah utk kami semua.  Baarakallahu fiikum jami'an.", full_name:"Laila Alfitah", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+  {message: "Allhamdulillah ana sangat bersyukur bisa dapat rezeki mengikuti daurah ini, yang mana banyak sekali ilmunya. Biidznillah ana jadi banyak belajar dan mendapat ilmu baru. Ustadzah nya sangat pandai membuat nyaman, sehingga proses belajar nya tidak monoton dan sangat menghidupkan suasana. Barakallahu Fiikum Ustadzah dan tim daurah semuanya.", full_name: 'Ratna Hulya', photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+  // {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+  // {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+  // {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
 ]
+// const testimonials = [
+//   {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+//   {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+//   {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+//   {message: "Masyaallah, Kelas yang padat ilmu dan interaktif, dan Ustadzah yang bersedia menjawab pertanyaan-pertanyaan kita.", photo: 'https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/female-avatar.jpeg'},
+// ]
+
 const availableClass = [
-  {title: "Tilawah dan Tadabbur Al Qur'an", slug:'tilawah-dan-tadabbur-al-quran-1256', subcategory_id: 'abcde123', type: 'anak-anak', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 12, price: 0, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
   {title: "Tadrib & Ahkam Tajwid", slug:'tadrib-tadabbur-ahkam-tajwid-1257', subcategory_id: 'abcde124', type: 'dewasa', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 20, price: 300000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
-  {title: "Aisar", slug:'aisar', subcategory_id: 'abcde125', type: 'remaja', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 5, created_at: new Date().toISOString(), views: 25, price: 250000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
-  {title: "Daurah/Kajian Ilmu Syar'i", slug: 'daurah-kajian-ilmu-syari', subcategory_id: 'abcde126',type: 'dewasa', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 5, price: 300000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
-  // {title: "T", type: 'Remaja dan Anak-Anak', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
 ]
+// const availableClass = [
+//   {title: "Tilawah dan Tadabbur Al Qur'an", slug:'tilawah-dan-tadabbur-al-quran-1256', subcategory_id: 'abcde123', type: 'anak-anak', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 12, price: 0, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+//   {title: "Tadrib & Ahkam Tajwid", slug:'tadrib-tadabbur-ahkam-tajwid-1257', subcategory_id: 'abcde124', type: 'dewasa', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 20, price: 300000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+//   {title: "Aisar", slug:'aisar', subcategory_id: 'abcde125', type: 'remaja', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 5, created_at: new Date().toISOString(), views: 25, price: 250000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+//   {title: "Daurah/Kajian Ilmu Syar'i", slug: 'daurah-kajian-ilmu-syari', subcategory_id: 'abcde126',type: 'dewasa', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 5, price: 300000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+//   // {title: "T", type: 'Remaja dan Anak-Anak', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+// ]
+// const availableClass = [
+//   {title: "Tilawah dan Tadabbur Al Qur'an", slug:'tilawah-dan-tadabbur-al-quran-1256', subcategory_id: 'abcde123', type: 'anak-anak', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 12, price: 0, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+//   {title: "Tadrib & Ahkam Tajwid", slug:'tadrib-tadabbur-ahkam-tajwid-1257', subcategory_id: 'abcde124', type: 'dewasa', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 20, price: 300000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+//   {title: "Aisar", slug:'aisar', subcategory_id: 'abcde125', type: 'remaja', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 5, created_at: new Date().toISOString(), views: 25, price: 250000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+//   {title: "Daurah/Kajian Ilmu Syar'i", slug: 'daurah-kajian-ilmu-syari', subcategory_id: 'abcde126',type: 'dewasa', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 5, price: 300000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+//   // {title: "T", type: 'Remaja dan Anak-Anak', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+// ]
 
 export default function Landing() {
   const navigate = useNavigate()
@@ -223,9 +251,47 @@ export default function Landing() {
 
         <section className="pb-20 bg-blueGray-200" style={{backgroundImage: `url(/images/AkhwatFillah-program-section-background.png)`, backgroundSize: 'cover', transform: "translateZ(0)"}}>
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 gap-2">
+            <div className="grid grid-cols-5 sm:grid-cols-1 md:grid-cols-5 gap-2">
               {/* flex flex-wrap */}
               <HoverDevCard
+                        title="Membangun Generasi Qur'ani Berlandaskan Al Qur'an dan As Sunnah sesuai Pemahaman Para Salafush Shalih,"
+                        // subtitle="Para pengajar yang kompeten serta memiliki pengalaman mengajar di bidang pengajaran Al-Qur'an."
+                        // tahsin dan tahfidz Al-Qur'an di Rumah Qur’an Al Ayman adalah para pengajar
+                        // subtitle="Para pengajar tahsin dan tahfidz Al-Qur'an yang kompeten serta berpengalaman"
+                        href="#"
+                        additionalClass="pt-12 text-base"
+                        Icon={FiUser}
+                      />
+                      <HoverDevCard
+                        title="Khusus Muslimah dan Anak-anak"
+                        // subtitle="Pembelajaran yang berbasis online dan interaktif langsung antara pengajar dan murid"
+                        href="#"
+                        additionalClass="text-lg"
+                        Icon={FiMail}
+                      />
+                      <HoverDevCard
+                        title="Pembelajaran Ilmu Syar'i dan Ilmu Umum yang Terstruktur"
+                        // subtitle="Pembelajaran dengan materi dan evaluasi yang telah terjadwal"
+                        // subtitle="Jadwal belajar yang dapat disesuaikan dengan kesibukan Anda"
+                        href="#"
+                        additionalClass="pt-12 text-lg"
+                        Icon={FiCreditCard}
+                      />
+                      <HoverDevCard
+                        title="Pengajar Berpengalaman dan Kompeten"
+                        // subtitle="Menyelenggarakan dauroh/kajian rutin ilmu syar’i dan ilmu yang bermanfaat untuk ummat."
+                        href="#"
+                      additionalClass="text-lg"
+                        Icon={FaAward}
+                      />
+                      <HoverDevCard
+                        title="Dauroh dan Pelatihan Khusus Muslimah"
+                        // subtitle="Menyelenggarakan dauroh/kajian rutin ilmu syar’i dan ilmu yang bermanfaat untuk ummat."
+                        href="#"
+                      additionalClass="pt-12 text-lg"
+                        Icon={FaHeadset}
+                      />
+              {/* <HoverDevCard
                         title="Pengajar Kompeten"
                         subtitle="Para pengajar yang kompeten serta memiliki pengalaman mengajar di bidang pengajaran Al-Qur'an."
                         // tahsin dan tahfidz Al-Qur'an di Rumah Qur’an Al Ayman adalah para pengajar
@@ -255,7 +321,7 @@ export default function Landing() {
                         href="#"
                       additionalClass="pt-12"
                         Icon={FiUsers}
-                      />
+                      /> */}
               {/* <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center"> */}
                 {/* <HoverDevCards/> */}
                 {/* <div className="grid w-full place-content-center bg-gradient-to-br from-indigo-500 to-violet-500 px-4 py-12 text-slate-900">

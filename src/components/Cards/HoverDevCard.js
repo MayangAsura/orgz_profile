@@ -64,11 +64,11 @@ const HoverDevCard = ({ title, subtitle, Icon, href, additionalClass }) => {
           <Icon className="mb-4 text-3xl text-[#42adf5] group-hover:text-white transition-colors duration-300" />
 
           {/* Content */}
-          <h3 className="font-semibold text-lg text-blueGray-800 group-hover:text-violet-500 relative z-20 duration-300 mb-2">
+          <h3 className="font-semibold text-blueGray-800 group-hover:text-violet-500 relative z-20 duration-300 mb-2">
             {title}
           </h3>
           <p className="text-blueGray-600 group-hover:text-[#000] relative z-20 duration-300 text-sm leading-relaxed">
-            {subtitle}
+            {/* {subtitle} */}
           </p>
         </div>
       </a>
