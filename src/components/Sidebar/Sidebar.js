@@ -1,4 +1,4 @@
- 
+
 import React from "react";
 import { Link } from "react-router-dom";
 import {useSelector} from 'react-redux'
@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux'
 import NotificationDropdown from "../../components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "../../components/Dropdowns/UserDropdown.js";
 import {MdLockReset, MdOutlineAccountCircle, MdOutlineAnalytics, MdOutlineAccountBalanceWallet, MdOutlineBrandingWatermark, MdOutlineSpaceDashboard} from 'react-icons/md'
-import {AiFillProduct, AiFillProject} from 'react-icons/ai'
+import {AiFillFileImage, AiFillProduct, AiFillProject} from 'react-icons/ai'
 import {GrTransaction} from 'react-icons/gr'
 
 export default function Sidebar() {
@@ -162,6 +162,28 @@ export default function Sidebar() {
                 <Link
                   className={
                     "flex flex-row text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/admin/galleries") !== -1
+                      ? "text-lightBlue-500 hover:text-lightBlue-600"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                  to="/admin/galleries"
+                >
+                  {/* <i
+                    className={
+                      "fas fa-table mr-2 text-sm " +
+                      (window.location.href.indexOf("/admin/classes") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  ></i>{" "} */}
+                  <AiFillFileImage className="mr-2" size="18px"/>
+                    Galleries
+                </Link>
+              </li>
+              <li className="items-center">
+                <Link
+                  className={
+                    "flex flex-row text-xs uppercase py-3 font-bold block " +
                     (window.location.href.indexOf("/admin/classes") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
@@ -298,12 +320,12 @@ export default function Sidebar() {
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            {/* <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               No Layout Pages
-            </h6>
+            </h6> */}
             {/* Navigation */}
 
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            {/* <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
@@ -323,14 +345,14 @@ export default function Sidebar() {
                   Profile Page
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
+            {/* <hr className="my-4 md:min-w-full" /> */}
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            {/* <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               Documentation
-            </h6>
+            </h6> */}
             {/* Navigation */}
             {/* <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="inline-flex">

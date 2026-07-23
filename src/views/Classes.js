@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import {
   Dialog,
   DialogBackdrop,
@@ -99,8 +99,8 @@ function classNames(...classes) {
 }
 
 const availableClass = [
-  {title: "Tilawah dan Tadabbur Al Qur'an", slug:'tilawah-dan-tadabbur-al-quran-1256', subcategory_id: 'abcde123', type: 'anak-anak', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 12, price: 0, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
-  {title: "Tadrib & Ahkam Tajwid", slug:'tadrib-tadabbur-ahkam-tajwid-1257', subcategory_id: 'abcde124', type: 'dewasa', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 20, price: 300000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+  {title: "Tilawah dan Tadabbur Al Qur'an", slug:'tilawah-dan-tadabbur-al-quran-1256', subcategory_id: 'abcde123', type: 'anak-anak', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 12, price: 15000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
+  {title: "Tadrib & Ahkam Tajwid", slug:'tadrib-tadabbur-ahkam-tajwid-1257', subcategory_id: 'abcde124', type: 'dewasa', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 20, price: 0, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
   {title: "Aisar", slug:'aisar', subcategory_id: 'abcde125', type: 'remaja', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 5, created_at: new Date().toISOString(), views: 25, price: 250000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
   {title: "Daurah/Kajian Ilmu Syar'i", slug: 'daurah-kajian-ilmu-syari', subcategory_id: 'abcde126',type: 'dewasa', thumbnails: '', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", rating: 4, created_at: new Date().toISOString(), views: 5, price: 300000, promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
   // {title: "T", type: 'Remaja dan Anak-Anak', description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah", promoteText: ["Sisa Kuota 16 Thalibah", "Hanya tersedia 3 Kelas untuk program Tahsin", "Kelas Interaktif", "Materi sistematis"]},
@@ -129,8 +129,9 @@ export default function Classes() {
     ]
   )
 
-  const [category, setCategory] = useState(useParams().categ)
-  const [type, setType] = useState(useParams().type)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [category, setCategory] = useState(searchParams.get('categ'))
+  const [type, setType] = useState(searchParams.get('type'))
 
   useEffect(() => {
 
@@ -191,6 +192,7 @@ export default function Classes() {
     if(category){
       setClasses(sorted_classes.filter(item => item.type === category))
     }
+    console.log('type', type)
     if(type){
       setClasses(sorted_classes.filter(item => type =='free'? item.price == 0 : item.price > 0))
     }

@@ -311,14 +311,14 @@ function classNames(...classes) {
 
 const contacts = [
     {
-        name: 'Nomor WhatsApp', type: 'phone', items: [{label: 'Admin 1', value: '(+62)843218765'}, {label: 'Admin 2', value: '(+62)843218766'}, {label: 'Admin 3', value: '(+62)843218767'}]
+        name: 'Nomor WhatsApp', type: 'phone', items: [{label: 'Admin Official RQA', value: '(+62)89512378367'}, {label: 'Admin Center RQA', value: '(+62)82286584052'}]
     },
     {
-        name: 'Alamat', type: 'address', items: [{label: 'Sekretariat', value: 'Jl. Abu Maryam no. 15'}]
+        name: 'Alamat', type: 'address', items: [{label: 'Sekretariat', value: 'Muara Enim Sumatera Selatan'}]
     },
-    {
-        name: 'Email', type: 'email', items: [{label: 'Email Pendaftaran', value: 'rqa.regist@gmail.com'}, {label: 'Email Support', value: 'rqa.support@gmail.com'}, {label: 'Email Umum', value: 'rqa.general@gmail.com'}, {label: 'Email Newsletter & Info', value: 'rqa.newsandinfo@gmail.com'}]
-    }
+    // {
+    //     name: 'Email', type: 'email', items: [{label: 'Email Pendaftaran', value: 'rqa.regist@gmail.com'}, {label: 'Email Support', value: 'rqa.support@gmail.com'}, {label: 'Email Umum', value: 'rqa.general@gmail.com'}, {label: 'Email Newsletter & Info', value: 'rqa.newsandinfo@gmail.com'}]
+    // }
 ]
 
 export default function ContactUs() {
@@ -484,7 +484,7 @@ export default function ContactUs() {
                         <div className="w-full px-4 ml-auto mr-auto text-center">
                             <div className="pr-12">
                             <h1 className="text-black font-semibold text-4xl text-shadow-lg/20">
-                                Tentang Kami
+                                Kontak Kami
                             </h1>
                             {/* <p className="mt-4 text-lg text-blueGray-200">
                                 Media pembelajaran ilmu syar'i berlandaskan Al Qur'an dan As

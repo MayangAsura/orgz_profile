@@ -38,6 +38,7 @@ import Dashboard from './views/admin/Dashboard.js';
 import FormalProducts from './views/admin/FormalPrograms.js';
 import Products from './views/admin/Products';
 import FormalPrograms from './views/admin/FormalPrograms.js';
+import Galleries from './views/admin/Galleries.js';
 import ChangePassword from './views/admin/ChangePassword.js';
 import Transactions from "./views/admin/Transactions.js";
 import Settings from './views/admin/Settings.js';
@@ -50,6 +51,9 @@ import ProductEdit from './views/admin/ProductEdit.js';
 import DetailFormalProgram from './views/admin/DetailFormalProgram.js';
 import FormalProgramCreate from './views/admin/FormalProgramCreate.js';
 import FormalProgramEdit from './views/admin/FormalProgramEdit.js';
+import DetailGalleries from './views/admin/DetailGalleries.js';
+import GalleriesCreate from './views/admin/GalleriesCreate.js';
+import GalleriesEdit from './views/admin/GalleriesEdit.js';
 import GraphAnalytics from './views/admin/GraphAnalytics.js';
 import WithDraws from './views/admin/WithDraws.js';
 import DetailWithDraws from './views/admin/DetailWithdraws.js';
@@ -99,9 +103,9 @@ function App() {
           <Route path="/admin/formal-programs/:id" element={<DetailFormalProgram/>} />
           <Route path="/admin/formal-programs/:id/edit" element={<FormalProgramEdit/>} />
           <Route path="/admin/galleries" element={<Galleries/>} />
-          <Route path="/admin/formal-programs/add" element={<FormalProgramCreate/>} />
-          <Route path="/admin/formal-programs/:id" element={<DetailFormalProgram/>} />
-          <Route path="/admin/formal-programs/:id/edit" element={<FormalProgramEdit/>} />
+          <Route path="/admin/galleries/add" element={<GalleriesCreate/>} />
+          <Route path="/admin/galleries/:id" element={<DetailGalleries/>} />
+          <Route path="/admin/galleries/:id/edit" element={<GalleriesEdit/>} />
           <Route path="/admin/transactions" element={<Transactions/>} />
           <Route path="/admin/transactions/:id" element={<DetailTransactions/>} />
           <Route path="/admin/balances" element={<WithDraws/>} />

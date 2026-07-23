@@ -17,14 +17,15 @@ export default function Navbar({additionalClass, transparent, goToClass}) {
       <nav className={`top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg ${additionalClass} ${transparent? 'bg-transparent' : 'bg-[#48afe3]'}`}>
         {/* #3090c1 */}
         <div className="container px-4 mx-auto flex items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <img src="https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/Rumah-Qur'an-Al-Ayman.png" width="2%" alt="Rumah Qur'an Al Ayman"/>
-            <a
-              className="w-74 text-white text-sm font-bold inline-block leading-relaxed mr-4 py-2 whitespace-nowrap uppercase transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500"
+          <div className="w-full relative flex lg:w-auto lg:static">
+            {/* lg:block  */}
+            <Link
+              className="flex items-center gap-2 text-white text-sm font-bold leading-relaxed mr-4 py-2 whitespace-nowrap uppercase transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-transparent"
               href="/"
             >
-              Rumah Qur'an Al Ayman
-            </a>
+            <img src="https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/frontpage/orgzs/Rumah-Qur'an-Al-Ayman.png" width="4%" alt="Rumah Qur'an Al Ayman"/>
+              {" "} Rumah Qur'an Al Ayman
+            </Link>
             <button
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
@@ -32,6 +33,94 @@ export default function Navbar({additionalClass, transparent, goToClass}) {
             >
               <i className="text-white fas fa-bars"></i>
             </button>
+
+            <div
+              className={
+                "lg:flex flex-grow gap-0 items-center bg-white lg:bg-opacity-0 lg:shadow-none" +
+                (navbarOpen ? "block rounded shadow-lg" : " hidden")
+              }
+              id="example-navbar-warning"
+            >
+              <ul className="flex flex-col w-52 mr-4 lg:flex-row list-none transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-transparent">
+                <li className="flex items-center">
+                  <a
+                    className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    href="#"
+                  >
+                    <i className="lg:text-blueGray-200 text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2" />{" "}
+                    Website Artikel
+                  </a>
+                </li>
+              </ul>
+              <ul className="flex flex-col w-full lg:flex-row list-none -ml-24">
+                {/* <li className="flex items-center">
+                  <PagesDropdown />
+                </li> */}
+                {/* <li className="flex items-center">
+                  <a
+                    className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-react%2F%23%2F"
+                    target="_blank"
+                  >
+                    <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg " />
+                    <span className="lg:hidden inline-block ml-2">Share</span>
+                  </a>
+                </li> */}
+
+                <li className="flex items-center">
+                  <a
+                    className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    // href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-react%2F%23%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20React%20UI%20Kit%20and%20Admin.%20Let%20Notus%20React%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level.%20"
+                    target="_blank"
+                  >
+                    {/* <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-twitter text-lg leading-lg " /> */}
+                    <span className="lg:hidden inline-block ml-2">Home</span>
+                  </a>
+                </li>
+                <li className="flex items-center">
+                  <a
+                    className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-react%2F%23%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20React%20UI%20Kit%20and%20Admin.%20Let%20Notus%20React%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level.%20"
+                    target="_blank"
+                  >
+                    {/* <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-twitter text-lg leading-lg " /> */}
+                    <span className="lg:hidden inline-block ml-2">About Us</span>
+                  </a>
+                </li>
+                <li className="flex items-center">
+                  <a
+                    className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-react%2F%23%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20React%20UI%20Kit%20and%20Admin.%20Let%20Notus%20React%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level.%20"
+                    target="_blank"
+                  >
+                    {/* <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-twitter text-lg leading-lg " /> */}
+                    <span className="lg:hidden inline-block ml-2">Contact Us</span>
+                  </a>
+                </li>
+
+                {/* <li className="flex items-center">
+                  <a
+                    className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    href="https://github.com/creativetimofficial/notus-react?ref=nr-auth-navbar"
+                    target="_blank"
+                  >
+                    <i className="lg:text-blueGray-200 text-blueGray-400 fab fa-github text-lg leading-lg " />
+                    <span className="lg:hidden inline-block ml-2">Star</span>
+                  </a>
+                </li> */}
+
+                <li className="flex items-center">
+                  <button
+                    className="w-28 bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-300 hover:-translate-y-1 hover:scale-110 "
+                    type="button"
+                    onClick={() => window.location.href=`${BASE_URL}/#classes`}
+                    // onClick={() => goToClass('our-classes')}
+                  >
+                    <i className="fas fa-arrow-alt-circle-down"></i> Register
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
 
         </div>

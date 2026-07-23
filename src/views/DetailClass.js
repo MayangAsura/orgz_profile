@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { StarIcon } from '@heroicons/react/20/solid'
 import Navbar from '../components/Navbars/AuthNavbar'
 import Modal from '../components/Modals/Modal'
@@ -76,10 +76,10 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 const availableClass = [
     {
         title: "Tilawah dan Tadabbur Al Qur'an",
-        slug:'tilawah-dan-tadabbur-al-quran-1256',
+        slug: 'tilawah-dan-tadabbur-al-quran-1256',
         type: 'Remaja dan Anak-Anak',
         description: "Jadwal: Selasa, 12.30 wib bersama ustadzah pengampu Ustadzah Reza Hafidzahullah",
-        price: '35000',
+        price: '15000',
         href: '#',
         breadcrumbs: [
             { id: 1, name: 'Men', href: '#' },
@@ -326,7 +326,8 @@ const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
 export default function DetailClass() {
     const location = useLocation()
-    const id = location.pathname.split("/")[2]
+    const id = useParams().id
+    // const id = location.pathname.split("/")[2]
     const [class_data, setClassData] = useState(product)
     const [order_data, setOrderData] = useState({})
     const [modal_open, setModalOpen] = useState(false)
@@ -352,6 +353,7 @@ export default function DetailClass() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        console.log('id', id)
         if(id){
             const data = availableClass.filter(i =>  i.slug == id)[0]
             console.log(data)

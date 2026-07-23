@@ -19,11 +19,11 @@ const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function DetailProduct() {
+export default function DetailGallery() {
 
   const {userInfo, orgzId} = useSelector(state => state.authReducer)
   const [users, setUsers] = useState({full_name: '', email: '', phone_number: '', job: '', avatar: ''})
-  const [product, setProduct] = useState("")
+  const [gallery, setGallery] = useState("")
   const { id } = useParams()
   const username = 'admin-rqa@gmail.com'
 
@@ -34,28 +34,28 @@ export default function DetailProduct() {
     }
     console.log('invoice_number', id)
     if(id){
-      getDetailProduct()
-      console.log('product', product)
+      getDetailGallery()
+      console.log('Gallery', gallery)
     }
   }, [userInfo, id])
 
-  const getDetailProduct = async () => {
+  const getDetailGallery = async () => {
     try {
-      let { data: orgz_products, error } = await supabase
-                                          .from('orgz_products')
-                                          .select('type,title,slug,thumbnail,price,views,rating,subcategory_id,promote_text,description,orgz_programs(title),orgz_subcategory(name)')
+      let { data: orgz_galleries, error } = await supabase
+                                          .from('orgz_galleries')
+                                          .select('type,title,slug,file_id,price,views,rating,subcategory_id,promote_text,description,orgz_programs(title),orgz_subcategory(name)')
                                           .eq('id', id)
                                           .single()
-                                        // const order = orgz_orders.map(order => ({order_status: order.order_status, total_price: order.total_price, total_amount: order.total_amount, total_discount: order.total_discount, promo_code: order.promo_code, products: order.orgz_order_details, users: order.orgz_users, participants: order.orgz_order_participants, packet_name: order.orgz_packets.name}))
+                                        // const order = orgz_orders.map(order => ({order_status: order.order_status, total_price: order.total_price, total_amount: order.total_amount, total_discount: order.total_discount, promo_code: order.promo_code, Galleries: order.orgz_order_details, users: order.orgz_users, participants: order.orgz_order_participants, packet_name: order.orgz_packets.name}))
                                         // console.log('order>', order)
-      if(orgz_products){
-        setProduct(orgz_products)
+      if(orgz_galleries){
+        setGallery(orgz_galleries)
       }else{
-        toast('Error when get product detail.')
+        toast('Error when get gallery detail.')
       }
 
     } catch (error) {
-      toast('Error when get product detail.')
+      toast('Error when get gallery detail.')
     }
   }
 
@@ -131,25 +131,16 @@ export default function DetailProduct() {
                 >
                   Nama
                 </label>
-                <span className="text-base text-gray-700"> {product.title} </span>
+                <span className="text-base text-gray-700"> {gallery.title} </span>
               </div>
               <div className="relative w-full mb-3">
                 <label
                   className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                   htmlFor="grid-password"
                 >
-                  Slug
+                  Held At
                 </label>
-                <a href={product.slug} className="text-base text-gray-700"> {product.slug} </a>
-              </div>
-              <div className="relative w-full mb-3">
-                <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
-                  Kategori
-                </label>
-                <span className="text-base text-gray-700"> {product.type} </span>
+                <span className="text-base text-gray-700"> {gallery.held_at} </span>
               </div>
               <div className="relative w-full mb-3">
                 <label
@@ -158,7 +149,7 @@ export default function DetailProduct() {
                 >
                   Deskripsi
                 </label>
-                <span className="text-base text-gray-700"> {product.description} </span>
+                <span className="text-base text-gray-700"> {gallery.description} </span>
               </div>
             </div>
             <div className="w-full lg:w-6/12 bg-white rounded-md p-10">
@@ -167,9 +158,9 @@ export default function DetailProduct() {
                   className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                   htmlFor="grid-password"
                 >
-                  Thumbnail
+                  Image
                 </label>
-                <img className="flex text-base text-gray-700 items-center" alt="" width="50%" src={product.thumbnail}/>
+                <img className="flex text-base text-gray-700 items-center" alt="" width="50%" src={gallery.file_id}/>
                 {/* <input
                   type="email"
                   className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -184,8 +175,8 @@ export default function DetailProduct() {
           <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
           <div className="rounded-t bg-white mb-0 px-6 py-6">
             <div className="text-center flex">
-              {/* <h6 className="text-blueGray-700 text-xl font-bold">{product.title} </h6> */}
-              {/* <span className={`${product.order_status ==='successed'? 'bg-green-400' : product.order_status ==='failed'? 'bg-red-400': 'bg-yellow-400' }`}>{product.order_status} </span> */}
+              {/* <h6 className="text-blueGray-700 text-xl font-bold">{Gallery.title} </h6> */}
+              {/* <span className={`${Gallery.order_status ==='successed'? 'bg-green-400' : Gallery.order_status ==='failed'? 'bg-red-400': 'bg-yellow-400' }`}>{Gallery.order_status} </span> */}
               {/* <button
                 className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                 type="button"
@@ -218,87 +209,11 @@ export default function DetailProduct() {
                       <div className="relative w-full mb-3">
                         <label
                           className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                          htmlFor="grid-password"
-                        >
-                          Views
-                        </label>
-                        <span className="text-base text-gray-700"> {product.views} </span>
-                      </div>
-                    </div>
-                    <div className="w-full lg:w-6/12 px-4">
-                      <div className="relative w-full mb-3">
-                        <label
-                          className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                          htmlFor="grid-password"
-                        >
-                          Rating
-                        </label>
-                        <div className="flex items-center">
-                          <div className="flex items-center">
-                          {[0, 1, 2, 3, 4].map((rating) => (
-                              <StarIcon
-                              key={rating}
-                              aria-hidden="true"
-                              className={classNames(
-                                  product.rating > rating ? 'text-yellow-300' : 'text-gray-200',
-                                  'size-5 shrink-0',
-                              )}
-                              />
-                          ))}
-                          </div>
-                          {/* sr-only */}
-                          <p className="">{product.rating} out of 5 stars</p>
-                          {/* <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                          {reviews.totalCount} reviews
-                          </a> */}
-                      </div>
-                      </div>
-                    </div>
-                    <div className="w-full lg:w-6/12 px-4">
-                      <div className="relative w-full mb-3">
-                        <label
-                          className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                          htmlFor="grid-password"
-                        >
-                          Sub Kategori
-                        </label>
-                        <span className="text-base text-gray-700"> {product.orgz_subcategory && product.orgz_subcategory.name} </span>
-                      </div>
-                    </div>
-                    <div className="w-full lg:w-6/12 px-4">
-                      <div className="relative w-full mb-3">
-                        <label
-                          className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                          htmlFor="grid-password"
-                        >
-                          Harga
-                        </label>
-
-                        <span className="text-base text-gray-700"> {`${formatCurrency(product.price, 'IDR')}`} </span>
-                      </div>
-                    </div>
-                    <div className="w-full lg:w-6/12 px-4">
-                      <div className="relative w-full mb-3">
-                        <label
-                          className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
 
                         >
                           Program
                         </label>
-                        {/* <span className="text-base text-gray-700"> {product.orgz_programs & product.orgz_programs.title} </span> */}
-                      </div>
-                    </div>
-                    <div className="w-full lg:w-6/12 px-4">
-                      <div className="relative w-full mb-3">
-                        <label
-                          className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                          htmlFor="grid-password"
-                        >
-                          Promote Text
-                        </label>
-                        {product.promote_text && product.promote_text.map(text => (
-                          <span className="text-base text-gray-700 border-sm border-green-400 rounded-sm px-3 py-2 bg-green-400 mr-2 mb-2"> {text}, </span>
-                        ))}
+                        <span className="text-base text-gray-700"> {gallery.orgz_programs & gallery.orgz_programs.title} </span>
                       </div>
                     </div>
                     {/* <div className="w-full lg:w-6/12 px-4">
@@ -309,42 +224,42 @@ export default function DetailProduct() {
                         >
                           Biaya Tambahan (Biaya Admin)
                         </label>
-                        <span className="text-base text-gray-700"> {product.admin_fee} </span>
+                        <span className="text-base text-gray-700"> {Gallery.admin_fee} </span>
                       </div>
                     </div> */}
 
                     {/* <div className="mt-10">
                         {
-                            product.orgz_order_details && product.orgz_order_details.length > 0 && (
+                            Gallery.orgz_order_details && Gallery.orgz_order_details.length > 0 && (
                               <>
                                 <ul className='mb-8'>
-                                    {product.orgz_order_details.orgz_products.map ((product, key) => (
+                                    {Gallery.orgz_order_details.orgz_Galleries.map ((Gallery, key) => (
                                         <div key={key+1} className='flex justify-between items-center bg-white text-xl mb-2 p-2 '>
-                                          {key+1}. {product.orgz_products.title}
+                                          {key+1}. {Gallery.orgz_Galleries.title}
                                           <div className='flex justify-between items-center' >
                                             <span className="text-base text-gray-600"> Harga </span>
                                             <span className="text-base text-gray-600"> : </span>
-                                            <span className="items-end text-base text-gray-500"> {product.price} </span>
+                                            <span className="items-end text-base text-gray-500"> {Gallery.price} </span>
                                           </div>
                                           <div className='flex justify-between items-center' >
                                             <span className="text-base text-gray-600"> Kode Promo </span>
                                             <span className="text-base text-gray-600"> : </span>
-                                            <span className="items-end text-base text-gray-500"> {product.promo_code} </span>
+                                            <span className="items-end text-base text-gray-500"> {Gallery.promo_code} </span>
                                           </div>
                                           <div className='flex justify-between items-center' >
                                             <span className="text-base text-gray-600"> Jumlah</span>
                                             <span className="text-base text-gray-600"> : </span>
-                                            <span className="items-end text-base text-gray-500"> {product.amount} </span>
+                                            <span className="items-end text-base text-gray-500"> {Gallery.amount} </span>
                                           </div>
                                           <div className='flex justify-between items-center' >
                                             <span className="text-base text-gray-600"> Diskon</span>
                                             <span className="text-base text-gray-600"> : </span>
-                                            <span className="items-end text-base text-gray-500"> {product.discount} </span>
+                                            <span className="items-end text-base text-gray-500"> {Gallery.discount} </span>
                                           </div>
                                           <div className='flex justify-between items-center' >
                                             <span className="text-base text-gray-600"> Diskon Nominal</span>
                                             <span className="text-base text-gray-600"> : </span>
-                                            <span className="items-end text-base text-gray-500"> {product.discount_nominal} </span>
+                                            <span className="items-end text-base text-gray-500"> {Gallery.discount_nominal} </span>
                                           </div>
                                         </div>
                                     ))}
@@ -363,7 +278,7 @@ export default function DetailProduct() {
                         >
                           Nomor Telepon
                         </label>
-                        <span className="text-base text-gray-700"> {product.orgz_users.phone_number || 0} </span>
+                        <span className="text-base text-gray-700"> {Gallery.orgz_users.phone_number || 0} </span>
                       </div>
                     </div>
                     <div className="w-full lg:w-6/12 px-4">
@@ -374,7 +289,7 @@ export default function DetailProduct() {
                         >
                           Domisili
                         </label>
-                        <span className="text-base text-gray-700"> {product.orgz_users.domicile || ''} </span>
+                        <span className="text-base text-gray-700"> {Gallery.orgz_users.domicile || ''} </span>
                       </div>
                     </div>
                     <div className="w-full lg:w-6/12 px-4">
@@ -385,15 +300,15 @@ export default function DetailProduct() {
                         >
                           Pekerjaan
                         </label>
-                        <span className="text-base text-gray-700"> {product.orgz_users.job || ''} </span>
+                        <span className="text-base text-gray-700"> {Gallery.orgz_users.job || ''} </span>
                       </div>
                     </div>
                     <div className="mt-10">
                         {
-                            product.orgz_order_participants && product.orgz_order_participants.length > 0 && (
+                            Gallery.orgz_order_participants && Gallery.orgz_order_participants.length > 0 && (
                               <>
                                 <ul className='mb-8'>
-                                    {product.orgz_order_participants.map ((user, key) => (
+                                    {Gallery.orgz_order_participants.map ((user, key) => (
                                         <div key={key+1} className='flex justify-between items-center bg-white text-xl mb-2 p-2 '>
                                           {key+1}. {user.full_name}
                                         </div>
@@ -412,7 +327,7 @@ export default function DetailProduct() {
                         >
                           Paket
                         </label>
-                        <span className="text-base text-gray-700"> {product.orgz_packets.name} </span>
+                        <span className="text-base text-gray-700"> {Gallery.orgz_packets.name} </span>
                       </div>
                     </div> */}
                   </div>
