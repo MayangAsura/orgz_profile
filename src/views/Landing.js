@@ -37,12 +37,12 @@ import { toast } from "react-toastify";
 const ORGZ_ID = import.meta.env.REACT_APP_ORGZ_ID
 
 const programs = [
-  {featured_image: program1, title: "Tashih Tilawah Al Qur'an", description: "Program perbaikan bacaan Al Qur'an khusus Muslimah dan Anak-Anak"},
-  {featured_image: program2, title: "Tahsin dan Tahfidz Al Qur'an", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
-  {featured_image: program3, title: "Bahasa Arab", description: "Program belajar bahasa Arab bersama asatidzah yang berkompeten"},
-  {featured_image: program2, title: "Ilmu Tajwid", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
-  {featured_image: program3, title: "Dauroh dan Pelatihan Muslimah", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
-  {featured_image: program2, title: "Program Ramadhan dan Holiday", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
+  {featured_image: "https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/backpage/programs/af8361e6-11ff-4800-b996-f2d567a7e56d/1.png", title: "Tashih Tilawah Al Qur'an", description: "Program perbaikan bacaan Al Qur'an khusus Muslimah dan Anak-Anak"},
+  {featured_image: "https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/backpage/programs/af8361e6-11ff-4800-b996-f2d567a7e56d/3.png", title: "Tahsin dan Tahfidz Al Qur'an", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
+  {featured_image: "https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/backpage/programs/af8361e6-11ff-4800-b996-f2d567a7e56d/5.png", title: "Bahasa Arab", description: "Program belajar bahasa Arab bersama asatidzah yang berkompeten"},
+  {featured_image: "https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/backpage/programs/af8361e6-11ff-4800-b996-f2d567a7e56d/9.png", title: "Ilmu Tajwid", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
+  {featured_image: "https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/backpage/programs/af8361e6-11ff-4800-b996-f2d567a7e56d/7.png", title: "Dauroh dan Pelatihan Muslimah", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
+  {featured_image: "https://dqninibrhfyreiclhile.supabase.co/storage/v1/object/public/backpage/programs/af8361e6-11ff-4800-b996-f2d567a7e56d/11.png", title: "Program Ramadhan dan Holiday", description: "Program menghafal Al Qur'an secara terstruktur sesuai kaidah tahfidz"},
 
 ]
 // const programs = [
@@ -394,14 +394,16 @@ export default function Landing() {
                   Pilihan Program
                 </h3>
               </div>
-              <div className="flex flex-wrap items-center justify-center">
-                {/* <div className="lg:pt-12 pt-6 w-full md:w-5/12 px-2 text-center"> */}
-                {
-                  programs && programs.map(program => (
-                    <HoverFormalProgramCard key={program.featured_image} featured_image={program.featured_image} title={program.title} description={program.description} />
+              {/* <div className="flex flex-wrap items-center justify-center"> */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+                  {
+                    programs && programs.map(program => (
+                      <HoverFormalProgramCard key={program.featured_image} featured_image={program.featured_image} title={program.title} description={program.description} />
 
-                  ))
-                }
+                    ))
+                  }
+                </div>
+                {/* <div className="lg:pt-12 pt-6 w-full md:w-5/12 px-2 text-center"> */}
 
                   {/* <BlockInTextCard
                     tag="/ Support"
@@ -481,7 +483,7 @@ export default function Landing() {
                     </p>
                   </div>
                 </div> */}
-              </div>
+              {/* </div> */}
               {/* <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                   Don't let your uses guess by attaching tooltips and popoves to
                   any element. Just make sure you enable them first via
