@@ -181,7 +181,7 @@ export default function Landing() {
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200">
                     Media pembelajaran ilmu syar'i berlandaskan Al Qur'an dan As
-                    Sunnah sesuai pemahaman para shahabat yang dikhususkan untuk
+                    Sunnah sesuai pemahaman para salafush shalih yang dikhususkan untuk
                     muslimah dan anak-anak.
                   </p>
                 </div>
