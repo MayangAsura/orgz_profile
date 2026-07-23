@@ -334,11 +334,11 @@ export default function DetailClass() {
     const [form_order, setFormOrder] = useState({
         names: [],
         phone_number: '',
-        packet: class_data.packets[0].code,
+        packet: class_data?.packets[0].code,
         promo_code: '',
         discount: '',
-        total_price: class_data.price,
-        class_name: class_data.name,
+        total_price: class_data?.price,
+        class_name: class_data?.name,
         class_id: id,
         admin_fee: 0
     })
@@ -534,14 +534,14 @@ export default function DetailClass() {
                                             console.log('success');
                                             console.log(result);
                                             toast.success('Pembayaran Berhasil!, Anda akan mendapatkan ringkasan pembayaran')
-                                            window.location.href= `https://api.whatsapp.com/send?phone=${form_order.phone_number}&text=Bismillah%2C%20Alhamdulllah%20Anda%20sudah%20terdaftar%20di%20kelas%20-${form_order.class_name}-%20untuk%20paket%20-${form_order.packet}-.%0APeserta%20Terdaftar%3A%0A${new_names}%0ANomor%20WA%3A%20-${form_order.phone_number}-%0AKode%20Promo%3A%20-${form_order.promo_code}-%20(-Rp-${form_order.discount}-)%20%0ATotal%20Bayar%3A%20-${form_order.total_price}-%0A%0AJazaakumullahu%20khayran.`
+                                            window.location.href= `https://api.whatsapp.com/send?phone=62${form_order.phone_number?.slice(0,1)}&text=Bismillah%2C%20Alhamdulllah%20Anda%20sudah%20terdaftar%20di%20kelas%20-${form_order.class_name}-%20untuk%20paket%20-${form_order.packet}-.%0APeserta%20Terdaftar%3A%0A${new_names}%0ANomor%20WA%3A%20-${form_order.phone_number}-%0AKode%20Promo%3A%20-${form_order.promo_code}-%20(-Rp-${form_order.discount}-)%20%0ATotal%20Bayar%3A%20-${form_order.total_price}-%0A%0AJazaakumullahu%20khayran.`
                                             // window.location.href= `https://api.whatsapp.com/send?phone=${form_order.phone_number}&text=Assalamu%27alaikum%2C%20tim%20RQA%2C%20ana%20ingin%20mendaftar%20kelas%20-${form_order.class_name}-%20untuk%20paket%20-${form_order.packet}-%3A%0A${new_names}%0ANomor%20WA%3A%20-${form_order.phone_number}-%0AKode%20Promo%3A%20-${form_order.promo_code}-%20(-Rp-${form_order.discount}-)%20%0ATotal%20Bayar%3A%20-${form_order.total_price}-%0A%0AJazaakumullahu%20khayran.`
                                             // navigate('/order-history')
                                         },
                                         onPending: function(result){
                                             console.log('pending');console.log(result);
                                             toast.info('Navigating to order history')
-                                            window.location.href= `https://api.whatsapp.com/send?phone=6285261527392&text=Bismillah%2C%20Jazaakumullahu%20khayran%20telah%20mendaftar%20di%20kelas%20-${form_order.class_name}-%20untuk%20paket%20-${form_order.packet}-.%0ABerikut%20invoice%20pembayaran%20kelas%3A%0A%0A%3D%3DInvoice%3D%3D%0ATanggal%20Transaksi%3A%20-${formatDate(payment_transaction_date)}-%0APeserta%20Terdaftar%3A%0A${new_names}0ANomor%20WA%3A%20-${form_order.phone_number}-%0AKode%20Promo%3A%20-${form_order.promo_code}-%20(-Rp-${form_order.discount}-)%20%0A%0ATotal%20Bayar%3A%20-${form_order.total_price}-%0AHalaman%20Pembayaran%3A%20-${payment_url}-%0A%0A!%3A%20Mohon%20lakukan%20pembayaran%20sebelum%20waktu%20tenggat%20yang%20tertera%20di%20halaman%20pembayaran.%0A%0AJazaakumullahu%20khayran.`
+                                            window.location.href= `https://api.whatsapp.com/send?phone=62${form_order.phone_number?.slice(0,1)}&text=Bismillah%2C%20Jazaakumullahu%20khayran%20telah%20mendaftar%20di%20kelas%20-${form_order.class_name}-%20untuk%20paket%20-${form_order.packet}-.%0ABerikut%20invoice%20pembayaran%20kelas%3A%0A%0A%3D%3DInvoice%3D%3D%0ATanggal%20Transaksi%3A%20-${formatDate(payment_transaction_date)}-%0APeserta%20Terdaftar%3A%0A${new_names}0ANomor%20WA%3A%20-${form_order.phone_number}-%0AKode%20Promo%3A%20-${form_order.promo_code}-%20(-Rp-${form_order.discount}-)%20%0A%0ATotal%20Bayar%3A%20-${form_order.total_price}-%0AHalaman%20Pembayaran%3A%20-${payment_url}-%0A%0A!%3A%20Mohon%20lakukan%20pembayaran%20sebelum%20waktu%20tenggat%20yang%20tertera%20di%20halaman%20pembayaran.%0A%0AJazaakumullahu%20khayran.`
                                             // navigate('/order-history')
                                         },
                                         onError: function(result){
@@ -702,7 +702,7 @@ export default function DetailClass() {
 
                     <fieldset aria-label="Choose a size" className="mt-4">
                         <div className="grid grid-cols-4 gap-3">
-                            {class_data?.map((packet) => (
+                            {class_data.length >0 && class_data.map((packet) => (
                             <label
                                 key={packet.code}
                                 aria-label={packet.name}
