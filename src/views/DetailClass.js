@@ -321,7 +321,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const PAYMENT_URL = process.env.REACT_APP_PAYMENT_URL || "http://localhost:5050"
+const PAYMENT_URL = process.env.REACT_APP_SERVER_MODE === 'development'? process.env.REACT_APP_LOCAL_SERVER_URL : process.env.REACT_APP_PROD_SERVER_URL
 const ORGZ_ID = process.env.REACT_APP_ORGZ_ID
 
 export default function DetailClass() {
@@ -702,7 +702,7 @@ export default function DetailClass() {
 
                     <fieldset aria-label="Choose a size" className="mt-4">
                         <div className="grid grid-cols-4 gap-3">
-                            {class_data.length >0 && class_data.map((packet) => (
+                            {class_data.packets.length >0 && class_data.packets.map((packet) => (
                             <label
                                 key={packet.code}
                                 aria-label={packet.name}
