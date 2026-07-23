@@ -957,7 +957,7 @@ export default function DetailClass() {
                     {/* <a
                         href={`https://api.whatsapp.com/send?phone=6285216527392&text=Assalamu%27alaikum%2C%20tim%20RQA%2C%20ana%20ingin%20mendaftar%20kelas%20-${form_order.class_name}-%20untuk%20paket%20-${form_order.packet}-%3A%0A${form_order.names}%0A%0ANomor%20WA%3A%20${form_order.phone_number}%0AKode%20Promo%3A%20${form_order.promo_code?form_order.promo_code`(${form_order.discount}%)`:'-'}%20%20%0ATotal%20Bayar%3A%20Rp${formatCurrency(form_order?.total_price, 'IDR')}%0A%0AJazaakumullahu%20khayran.`}
                         className="block text-white text-center text-base bg-amber-600 box-border border border-transparent rounded-md my-3 hover:bg-amber-700 focus:ring-4 focus:ring-brand-medium shadow-xs leading-5 rounded-base font-medium px-4 py-2.5 focus:outline-none w-full mb-3">Daftar</a> */}
-                        <button onClick={() => handlePay()} className="block text-white text-center text-base bg-amber-600 box-border border border-transparent rounded-md my-3 hover:bg-amber-700 focus:ring-4 focus:ring-brand-medium shadow-xs leading-5 rounded-base font-medium px-4 py-2.5 focus:outline-none w-full mb-3">Bayar</button>
+                        <button type='button' onClick={handlePay} className="block text-white text-center text-base bg-amber-600 box-border border border-transparent rounded-md my-3 hover:bg-amber-700 focus:ring-4 focus:ring-brand-medium shadow-xs leading-5 rounded-base font-medium px-4 py-2.5 focus:outline-none w-full mb-3">Bayar</button>
                     {/* <div className="text-sm font-medium text-bo dy">Not registered? <a href="#" className="text-fg-brand hover:underline">Create account</a></div> */}
                 </form>
             </Modal>
